@@ -12,7 +12,7 @@ import withState from 'helpers/withState'
 import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
 import winstonLogger, { winstonStream } from 'config/winston'
 
-const GenerateDoc = require('utils/GenerateDocs')
+// const GenerateDoc = require('utils/GenerateDocs')
 
 const app = express()
 
@@ -34,7 +34,7 @@ app.use((req: Request, res, next) => {
 })
 
 // Initial Docs Swagger
-GenerateDoc(app)
+// GenerateDoc(app)
 
 // Initial Route
 app.use(indexRouter)
