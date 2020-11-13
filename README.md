@@ -10,11 +10,30 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/masb0ymas/express-gateway-typescript/blob/main/LICENSE.md" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/masb0ymas/express-gateway-typescript" />
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
 > Api Gateway with Express TypeScript
+
+### 🏠 [Homepage](https://github.com/masb0ymas/express-gateway-typescript)
+
+## Prerequisites
+
+- npm >= `v6.x`
+- node >= `v10.x`
+- eslint >= `v7.x`
+- Familiar with TypeScript 💪
+
+## Feature
+
+- [TypeScript](https://github.com/microsoft/TypeScript) `v4.x`
+- [Nodemailer](https://github.com/nodemailer/nodemailer)
+- [Handlebars](https://github.com/wycats/handlebars.js) for templating HTML
+- JavaScript Style [Airbnb Base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
+- Formating code using [Prettier](https://github.com/prettier/prettier) Integration [Eslint](https://github.com/prettier/eslint-config-prettier)
+- Using [Babel Resolver](https://github.com/tleunen/babel-plugin-module-resolver) for simplify the require/import paths
+- Documentation with [Swagger](https://github.com/swagger-api/swagger-ui)
 
 ## Install
 
