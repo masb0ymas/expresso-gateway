@@ -27,16 +27,41 @@ class Role {
     this.default = FetchApi.default
   }
 
-  // Get All
+  /**
+    Get All
+  */
   getAll(params: queryAttributes) {
     const query = { ...params }
     const queryParams = queryString.stringify(query)
     return this.default.get(`/v1/role/?${queryParams}`)
   }
 
-  // Get One
+  /**
+    Get One
+  */
   getOne(id: string) {
     return this.default.get(`/v1/role/${id}`)
+  }
+
+  /**
+    Create Data
+  */
+  create(formData: any) {
+    return this.default.post(`/v1/role`, formData)
+  }
+
+  /**
+    Update Data
+  */
+  update(formData: any, id: string) {
+    return this.default.put(`/v1/role/${id}`, formData)
+  }
+
+  /**
+    Delete Data
+  */
+  destroy(id: string) {
+    return this.default.delete(`/v1/role/${id}`)
   }
 }
 
