@@ -1,6 +1,6 @@
 {
   "name": "express-gateway-typescript",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Api Gateway with Express TypeScript",
   "main": "index.js",
   "scripts": {
