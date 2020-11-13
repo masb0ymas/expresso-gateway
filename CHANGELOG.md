@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](///compare/v0.0.1...v0.0.2) (2020-11-13)
+
+
+### Features
+
+* crud role controller ([7297cc7](///commit/7297cc7ddee54dc6bee0cc2b5de28d29fcd6fe1b))
+* crud role service ([d35dff3](///commit/d35dff3456b816a21753038780d2fca4509634f5))
+* vscode config ([0dcaeff](///commit/0dcaeff840d31c22f59c44c110caeb102b97b60b))
+
+
+### Bug Fixes
+
+* config swagger ([84d9e16](///commit/84d9e161a65db376943b62e65f88ced62cfcdc1d))
+
 ### 0.0.1 (2020-11-13)
 
 
