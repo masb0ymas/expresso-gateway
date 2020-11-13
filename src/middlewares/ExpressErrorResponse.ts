@@ -19,6 +19,13 @@ async function ExpressErrorResponse(
       .json(generateErrorResponseError(err, err.statusCode))
   }
 
+  if (err.code === 'ECONNREFUSED') {
+    return res.status(500).json({
+      code: 500,
+      message: 'service unavailable',
+    })
+  }
+
   next(err)
 }
 
