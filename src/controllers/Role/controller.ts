@@ -3,6 +3,7 @@ import asyncHandler from 'helpers/asyncHandler'
 import BuildResponse from 'modules/Response/BuildResponse'
 import routes from 'routes/public'
 import Role from 'controllers/Role/services'
+import Authorization from 'middlewares/Authorization'
 
 const RoleService = new Role()
 
@@ -34,6 +35,7 @@ routes.get(
 
 routes.post(
   '/role',
+  Authorization,
   asyncHandler(async function createData(req: Request, res: Response) {
     const formData = req.getBody()
 
@@ -47,11 +49,12 @@ routes.post(
 
 routes.put(
   '/role/:id',
+  Authorization,
   asyncHandler(async function updateData(req: Request, res: Response) {
     const formData = req.getBody()
     const { id } = req.getParams()
 
-    const resData = await RoleService.update(formData, id)
+    const resData = await RoleService.update(id, formData)
     const { message, data } = resData.data
     const buildResponse = BuildResponse.updated({ message, data })
 
@@ -61,6 +64,7 @@ routes.put(
 
 routes.delete(
   '/role/:id',
+  Authorization,
   asyncHandler(async function deleteData(req: Request, res: Response) {
     const { id } = req.getParams()
 
