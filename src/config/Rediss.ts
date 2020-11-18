@@ -37,7 +37,8 @@ class Redis {
   /**
    *
    * @param key
-   * example: 'get-role'
+   * @example
+   * // get('get-role')
    */
   public static get(key: string) {
     client.get(key)
@@ -45,9 +46,9 @@ class Redis {
 
   /**
    *
-   * @param key
-   * get all by key return array
-   * example: 'get-role:*'
+   * @param key get all by key return array
+   * @example
+   * // keys.('get-role:*')
    */
   public static keys(key: string) {
     client.keys(key)
