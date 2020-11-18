@@ -28,8 +28,11 @@ class Role {
   }
 
   /**
-    Get All
-  */
+   *
+   * @param params params like query string
+   * @example
+   * // example.com?filtered=[]&sorted=[]&page=1&pageSize=10
+   */
   getAll(params: queryAttributes) {
     const query = { ...params }
     const queryParams = queryString.stringify(query)
@@ -37,29 +40,34 @@ class Role {
   }
 
   /**
-    Get One
-  */
+   *
+   * @param id
+   */
   getOne(id: string) {
     return this.default.get(`/v1/role/${id}`)
   }
 
   /**
-    Create Data
-  */
+   *
+   * @param formData
+   */
   create(formData: any) {
     return this.default.post(`/v1/role`, formData)
   }
 
   /**
-    Update Data
-  */
+   *
+   * @param id
+   * @param formData
+   */
   update(id: string, formData: any) {
     return this.default.put(`/v1/role/${id}`, formData)
   }
 
   /**
-    Delete Data
-  */
+   *
+   * @param id
+   */
   destroy(id: string) {
     return this.default.delete(`/v1/role/${id}`)
   }
