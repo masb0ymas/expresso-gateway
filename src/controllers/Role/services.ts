@@ -53,7 +53,7 @@ class Role {
   /**
     Update Data
   */
-  update(formData: any, id: string) {
+  update(id: string, formData: any) {
     return this.default.put(`/v1/role/${id}`, formData)
   }
 
