@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](///compare/v0.1.0...v0.1.1) (2020-11-18)
+
+
+### Features
+
+* auth middleware role controller ([f004608](///commit/f0046083c1dd052ad8a91ae18cada0f3433287ed))
+* comment function ([306d0b7](///commit/306d0b7bff9a5c77b18848f12865ccda18e5fc78))
+
+
+### Bug Fixes
+
+* argument service role update ([cf3421d](///commit/cf3421d00eec2b49a86055cbab2a3fbe9c10a514))
+* comment function service role ([37dc08d](///commit/37dc08d8d4cb5bb933d16be1096e95e281a1d0da))
+* comment with example ([e30932b](///commit/e30932b3cf60f39093bcef1ac944e49d0165745b))
+* remove redis ([8bac732](///commit/8bac732e730b107f346ded3c1590c1fd46d5c857))
+
 ### 0.1.0 (2020-11-13)
 
 
