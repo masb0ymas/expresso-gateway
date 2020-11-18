@@ -28,6 +28,12 @@ class EmailProvider {
 
   private mailOptions: nodemailer.SendMailOptions | undefined
 
+  /**
+   *
+   * @param to
+   * @param subject
+   * @param template
+   */
   public send = (
     to: string[],
     subject: string,
