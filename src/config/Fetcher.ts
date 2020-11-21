@@ -73,6 +73,10 @@ function createDefaultAxios(baseURL: string): AxiosInstance {
 
       const handleError = error?.response?.headers?.handleError
       if (!handleError || !handleError(error)) {
+        if (error.code === 'ECONNREFUSED') {
+          throw new ResponseError.InternalServer('service unavailable')
+        }
+
         console.log(error.message)
         throw new ResponseError.BadRequest(error.message)
       }
