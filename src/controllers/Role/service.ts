@@ -20,7 +20,7 @@ interface queryAttributes {
 
 const FetchApi = new Fetcher(API_SERVICE_USER)
 
-class Role {
+class RoleService {
   private default: AxiosInstance
 
   constructor() {
@@ -73,4 +73,4 @@ class Role {
   }
 }
 
-export default Role
+export default RoleService
