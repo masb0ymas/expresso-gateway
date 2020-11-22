@@ -3,9 +3,12 @@ import axios, { AxiosError, AxiosInstance } from 'axios'
 import { get } from 'lodash'
 import ResponseError from 'modules/Response/ResponseError'
 
+const AXIOS_TIMEOUT = process.env.AXIOS_TIMEOUT || 5000
+
 function createAuthAxios(baseURL: string): AxiosInstance {
   const instanceAxios = axios.create({
     baseURL,
+    timeout: Number(AXIOS_TIMEOUT),
   })
 
   instanceAxios.interceptors.request.use((config) => {
@@ -62,6 +65,7 @@ function createAuthAxios(baseURL: string): AxiosInstance {
 function createDefaultAxios(baseURL: string): AxiosInstance {
   const instanceAxios = axios.create({
     baseURL,
+    timeout: Number(AXIOS_TIMEOUT),
   })
 
   instanceAxios.interceptors.response.use(
