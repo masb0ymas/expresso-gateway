@@ -25,14 +25,30 @@ function createAuthAxios(baseURL: string): AxiosInstance {
       return response
     },
     function onError(error: AxiosError) {
-      const status = get(error, 'response.status', null)
-      if (status === 401) {
+      const statusCode = get(error, 'response.status', null)
+      const message = get(error, 'response.data.message', null)
+
+      if (statusCode === 401) {
         console.log('Unauhtorized')
-        return Promise.reject(error)
+        throw new ResponseError.Unauthorized(message)
+      }
+
+      if (statusCode === 400) {
+        console.log('Bad Request')
+        throw new ResponseError.BadRequest(message)
+      }
+
+      if (statusCode === 404) {
+        console.log('Not Found')
+        throw new ResponseError.NotFound(message)
       }
 
       const handleError = error?.response?.headers?.handleError
       if (!handleError || !handleError(error)) {
+        if (error.code === 'ECONNREFUSED') {
+          throw new ResponseError.InternalServer('service unavailable')
+        }
+
         console.log(error.message)
         throw new ResponseError.BadRequest(error.message)
       }
