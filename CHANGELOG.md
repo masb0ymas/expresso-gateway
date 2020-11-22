@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](///compare/v0.1.1...v0.1.2) (2020-11-22)
+
+
+### Features
+
+* add default timeout axios ([807e0d9](///commit/807e0d9c649468757d3f083856e4ad012be90ba2))
+* auth controller ([032b0b7](///commit/032b0b7a3329794d03e8a3bfd92b61baacb93654))
+* auth service ([ac325c8](///commit/ac325c805021f77f4141b66244b86c7e1b09c18c))
+* docs swagger auth ([0f381f0](///commit/0f381f0b6612d80b244adc1499549a33355daff1))
+* module internal server error ([6a69c8d](///commit/6a69c8d2638a118c9af7adf82a3769e1f9ca84b6))
+
+
+### Bug Fixes
+
+* check error econnrefused ([1a0dbcd](///commit/1a0dbcdb1e29e2d11d5151f5ec440d60b204c3d4))
+* ignore git ([fb9e39b](///commit/fb9e39b435996496bf46105b3bf3f2317472d86d))
+* middleware express ([e235203](///commit/e235203e499a01797f378db3aa657620d2bba7b7))
+* respones fetch api with token ([45666ce](///commit/45666cef978832fcd3c315c472403f6df9add2b6))
+* response error internal server ([4adaefa](///commit/4adaefa5d3d1bc10729954679110e51d53c52344))
+* role controller ([36dd648](///commit/36dd648e0e2cbc1d995a8751bbfe6d018151cfc5))
+* route auth controller ([97a680a](///commit/97a680acfc64ab5ebd32bad81a170c37ad9bde7b))
+
 ### [0.1.1](///compare/v0.1.0...v0.1.1) (2020-11-18)
 
 
