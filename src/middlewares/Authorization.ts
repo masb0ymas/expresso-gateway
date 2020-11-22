@@ -14,6 +14,7 @@ async function Authorization(req: Request, res: Response, next: NextFunction) {
     })
   }
 
+  req.setState({ user: token?.data })
   next()
 }
 
