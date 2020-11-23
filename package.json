@@ -18,7 +18,9 @@
     "serve:staging": "NODE_ENV=staging node ./dist/bin/server.js",
     "serve:production": "NODE_ENV=production node ./dist/bin/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:pre": "npm run release -- --prerelease",
+    "release:minor": "npm run release -- --release-as minor"
   },
   "dependencies": {
     "axios": "^0.21.0",
