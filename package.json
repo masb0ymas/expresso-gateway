@@ -51,7 +51,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.7",
+    "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.7",
     "@babel/node": "^7.12.6",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
