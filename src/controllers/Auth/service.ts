@@ -14,14 +14,25 @@ class AuthService {
     this.default = FetchApi.default
   }
 
+  /**
+   *
+   * @param formData
+   */
   register(formData: any) {
     return this.default.post(`/v1/auth/sign-up`, formData)
   }
 
+  /**
+   *
+   * @param formData
+   */
   login(formData: any) {
     return this.default.post(`/v1/auth/sign-in`, formData)
   }
 
+  /**
+   * Get Profile
+   */
   getProfile() {
     return this.default.get(`/v1/profile`)
   }

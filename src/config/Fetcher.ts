@@ -1,10 +1,13 @@
-/* eslint-disable no-unused-vars */
 import axios, { AxiosError, AxiosInstance } from 'axios'
 import { get } from 'lodash'
 import ResponseError from 'modules/Response/ResponseError'
 
 const AXIOS_TIMEOUT = process.env.AXIOS_TIMEOUT || 5000
 
+/**
+ *
+ * @param baseURL
+ */
 function createAuthAxios(baseURL: string): AxiosInstance {
   const instanceAxios = axios.create({
     baseURL,
@@ -62,6 +65,10 @@ function createAuthAxios(baseURL: string): AxiosInstance {
   return instanceAxios
 }
 
+/**
+ *
+ * @param baseURL
+ */
 function createDefaultAxios(baseURL: string): AxiosInstance {
   const instanceAxios = axios.create({
     baseURL,

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { Request } from 'express'
 import jwt, {
   TokenExpiredError,
@@ -9,20 +8,32 @@ import { isEmpty } from 'lodash'
 
 require('dotenv').config()
 
-const { JWT_SECRET }: any = process.env
+const { JWT_SECRET_ACCESS_TOKEN, JWT_SECRET_REFRESH_TOKEN }: any = process.env
 
-// Get Token from headers
+/**
+ *
+ * @param headers - Get Token from headers
+ */
 function getToken(headers: any) {
   if (headers && headers.authorization) {
     const parted = headers.authorization.split(' ')
-    if (parted.length === 2) {
-      return parted[1]
+
+    // Check Bearer xxx || JWT xxx
+    if (parted[0] === 'Bearer' || parted[0] === 'JWT') {
+      if (parted.length === 2) {
+        return parted[1]
+      }
     }
+
     return null
   }
   return null
 }
 
+/**
+ *
+ * @param req - Request
+ */
 function currentToken(req: Request) {
   const getCookie = req.getCookies()
   const getHeaders = req.getHeaders()
@@ -37,14 +48,17 @@ function currentToken(req: Request) {
   return curToken
 }
 
-// Verify Token
+/**
+ *
+ * @param token - Verify Token
+ */
 function verifyToken(token: string) {
   try {
     if (!token) {
       return { data: null, message: 'Unauthorized!' }
     }
 
-    const data = jwt.verify(token, JWT_SECRET)
+    const data = jwt.verify(token, JWT_SECRET_ACCESS_TOKEN)
     return { data, message: 'Token is verify' }
   } catch (err) {
     if (err instanceof TokenExpiredError) {
@@ -61,4 +75,31 @@ function verifyToken(token: string) {
   }
 }
 
-export { getToken, currentToken, verifyToken }
+/**
+ *
+ * @param token - Verify Token
+ */
+function verifyRefreshToken(token: string) {
+  try {
+    if (!token) {
+      return { data: null, message: 'Unauthorized!' }
+    }
+
+    const data = jwt.verify(token, JWT_SECRET_REFRESH_TOKEN)
+    return { data, message: 'Token is verify' }
+  } catch (err) {
+    if (err instanceof TokenExpiredError) {
+      return { data: null, message: `Token ${err.message}` }
+    }
+
+    if (err instanceof JsonWebTokenError) {
+      return { data: null, message: `Token ${err.message}` }
+    }
+
+    if (err instanceof NotBeforeError) {
+      return { data: null, message: `Token ${err.message}` }
+    }
+  }
+}
+
+export { getToken, currentToken, verifyToken, verifyRefreshToken }

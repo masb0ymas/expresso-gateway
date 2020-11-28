@@ -1,9 +1,11 @@
-/* eslint-disable no-unused-vars */
 import fs from 'fs'
 
 const invalidValues = [null, undefined, '', false, 0]
 
-// Generate Unique Code ( default length 32 )
+/**
+ *
+ * @param length - Generate Unique Code ( default length 32 )
+ */
 function getUniqueCodev2(length = 32) {
   let result = ''
   const characters =
@@ -15,7 +17,11 @@ function getUniqueCodev2(length = 32) {
   return result
 }
 
-// Read HTML File
+/**
+ *
+ * @param path - path file template html
+ * @param callback
+ */
 function readHTMLFile(path: any, callback: any) {
   fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
     if (err) {

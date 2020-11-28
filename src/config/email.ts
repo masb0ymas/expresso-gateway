@@ -91,6 +91,12 @@ class EmailProvider {
     return configTransport
   }
 
+  /**
+   *
+   * @param dest
+   * @param subject
+   * @param text
+   */
   private setMailOptions = (
     dest: string,
     subject: string,
@@ -104,6 +110,12 @@ class EmailProvider {
     }
   }
 
+  /**
+   *
+   * @param dest
+   * @param subject
+   * @param text
+   */
   private sendMail = (
     dest: string,
     subject: string,

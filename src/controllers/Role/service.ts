@@ -7,7 +7,7 @@ require('dotenv').config()
 const API_SERVICE_USER = process.env.API_SERVICE_USER || 'http://localhost:8001'
 
 /*
-  Query Params like :
+  Query Params like this :
   example.com?page=1&pageSize=2&filtered=[{"id": "nama", "value": "admin"}]&sorted=[{"id": "nama", "desc": true}]
 */
 
