@@ -91,6 +91,42 @@ module.exports = {
       },
     },
   },
+  '/refresh-token': {
+    post: {
+      tags: ['Auth'],
+      summary: 'Get Refresh Token',
+      produces: ['application/json'],
+      security: [
+        {
+          auth_token: [],
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          'application/x-www-form-urlencoded': {
+            schema: {
+              type: 'object',
+              properties: {
+                email: {
+                  type: 'string',
+                },
+                refreshToken: {
+                  type: 'string',
+                },
+              },
+              required: ['email', 'refreshToken'],
+            },
+          },
+        },
+      },
+      responses: {
+        200: {
+          description: 'Logout',
+        },
+      },
+    },
+  },
   '/logout': {
     post: {
       tags: ['Auth'],
