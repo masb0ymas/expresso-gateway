@@ -6,6 +6,7 @@ import BuildResponse from 'modules/Response/BuildResponse'
 import routes from 'routes/public'
 import Auth from 'controllers/Auth/service'
 import User from 'controllers/User/service'
+import RefreshToken from 'controllers/RefreshToken/service'
 import Authorization from 'middlewares/Authorization'
 import { get } from 'lodash'
 
@@ -13,6 +14,7 @@ require('dotenv').config()
 
 const AuthService = new Auth()
 const UserService = new User()
+const RefreshTokenService = new RefreshToken()
 
 const { JWT_SECRET_ACCESS_TOKEN, JWT_SECRET_REFRESH_TOKEN }: any = process.env
 
@@ -66,6 +68,13 @@ routes.post(
         expiresIn: JWT_REFRESH_TOKEN_EXPIRED,
       }
     )
+
+    const formDataRefreshToken = {
+      UserId: data.id,
+      token: refreshToken,
+    }
+
+    await RefreshTokenService.create(formDataRefreshToken)
 
     return res
       .status(200)
