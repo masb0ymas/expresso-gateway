@@ -91,4 +91,37 @@ module.exports = {
       },
     },
   },
+  '/logout': {
+    post: {
+      tags: ['Auth'],
+      summary: 'Logout',
+      produces: ['application/json'],
+      security: [
+        {
+          auth_token: [],
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          'application/x-www-form-urlencoded': {
+            schema: {
+              type: 'object',
+              properties: {
+                UserId: {
+                  type: 'string',
+                },
+              },
+              required: ['UserId'],
+            },
+          },
+        },
+      },
+      responses: {
+        200: {
+          description: 'Logout',
+        },
+      },
+    },
+  },
 }
