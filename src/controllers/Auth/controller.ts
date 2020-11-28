@@ -1,14 +1,25 @@
 import { Request, Response } from 'express'
+import ms from 'ms'
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'helpers/asyncHandler'
 import BuildResponse from 'modules/Response/BuildResponse'
 import routes from 'routes/public'
 import Auth from 'controllers/Auth/service'
+import User from 'controllers/User/service'
 import Authorization from 'middlewares/Authorization'
+import { get } from 'lodash'
+
+require('dotenv').config()
 
 const AuthService = new Auth()
+const UserService = new User()
 
-const { JWT_SECRET }: any = process.env
+const { JWT_SECRET_ACCESS_TOKEN, JWT_SECRET_REFRESH_TOKEN }: any = process.env
+
+const JWT_ACCESS_TOKEN_EXPIRED = process.env.JWT_ACCESS_TOKEN_EXPIRED || '1d' // 7 Days
+const JWT_REFRESH_TOKEN_EXPIRED = process.env.JWT_REFRESH_TOKEN_EXPIRED || '30d' // 30 Days
+
+const expiresIn = ms(JWT_ACCESS_TOKEN_EXPIRED) / 1000
 
 routes.post(
   '/register',
@@ -29,20 +40,36 @@ routes.post(
     const formData = req.getBody()
 
     const resData = await AuthService.login(formData)
-    const { tokenType, expiresIn, data } = resData.data
+    const { tokenType, data } = resData.data
 
-    const token = jwt.sign({ data }, JWT_SECRET, {
-      expiresIn,
-    })
+    const payloadToken = {
+      id: data.id,
+      nama: data.fullName,
+      email: data.email,
+      active: data.active,
+    }
 
-    const buildResponse = BuildResponse.get({
-      token,
-      tokenType,
-      expiresIn,
-      data,
-    })
+    // Access Token
+    const accessToken = jwt.sign(
+      JSON.parse(JSON.stringify(payloadToken)),
+      JWT_SECRET_ACCESS_TOKEN,
+      {
+        expiresIn,
+      }
+    )
 
-    return res.status(200).json(buildResponse)
+    // Refresh Token
+    const refreshToken = jwt.sign(
+      JSON.parse(JSON.stringify(payloadToken)),
+      JWT_SECRET_REFRESH_TOKEN,
+      {
+        expiresIn: JWT_REFRESH_TOKEN_EXPIRED,
+      }
+    )
+
+    return res
+      .status(200)
+      .json({ accessToken, tokenType, expiresIn, refreshToken })
   })
 )
 
@@ -51,7 +78,24 @@ routes.get(
   Authorization,
   asyncHandler(async function getProfile(req: Request, res: Response) {
     const { user }: any = req.state
-    const buildResponse = BuildResponse.get({ data: user.data })
+
+    const resUser = await UserService.getOne(user.id)
+    const userData = get(resUser, 'data.data', {})
+    const buildResponse = BuildResponse.get({ data: userData })
+
+    return res.status(200).json(buildResponse)
+  })
+)
+
+routes.post(
+  '/logout',
+  Authorization,
+  asyncHandler(async function authLogout(req: Request, res: Response) {
+    const formData = req.getBody()
+
+    const resData = await AuthService.logout(formData)
+    const { message } = resData.data
+    const buildResponse = BuildResponse.deleted({ message })
 
     return res.status(200).json(buildResponse)
   })
