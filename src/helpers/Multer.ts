@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { pickBy } from 'lodash'
 import { Request } from 'express'
 

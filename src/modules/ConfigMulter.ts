@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import multer from 'multer'
 import { Request, Express } from 'express'
 
