@@ -34,6 +34,7 @@
 - Formating code using [Prettier](https://github.com/prettier/prettier) Integration [Eslint](https://github.com/prettier/eslint-config-prettier)
 - Using [Babel Resolver](https://github.com/tleunen/babel-plugin-module-resolver) for simplify the require/import paths
 - Documentation with [Swagger](https://github.com/swagger-api/swagger-ui)
+- Generate Log File with [Winston](https://github.com/winstonjs/winston)
 
 ## Install
 
