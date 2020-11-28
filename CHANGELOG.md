@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](///compare/v0.2.0...v1.0.0) (2020-11-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* refresh token controller
+* refresh token service
+
+### Features
+
+* add lib ms ([701f46a](///commit/701f46a970bfdd8ad2791f5cf2942a40d0116959))
+* endpoint logout ([33f7da8](///commit/33f7da8c00137c456ebf6c8b9db24fda2112a754))
+* refresh token controller ([433d6fa](///commit/433d6fa6b34b095aa94121b2da258229d9becaa8))
+* refresh token service ([b4862ce](///commit/b4862ce3a012ac796ceeef30881f193ea85d5259))
+* user controller ([9473f2a](///commit/9473f2a84887f6cb3126c7e00813dadf7d2ce511))
+* user service ([c818fa7](///commit/c818fa75e2bd84157e4075a0a601f16df961c36e))
+
+
+### Bug Fixes
+
+* config vscode ([9b07adc](///commit/9b07adcdcef98b1125984bdff0f5d13c2afc9e5f))
+* create refresh token after login ([0829f3d](///commit/0829f3d4ba43d4d4b83d60ac091a458c53baa641))
+* generate access token & refresh token ([5273ca6](///commit/5273ca691ac39f47b137b72b5c361589ea92395b))
+* login, get profile & logout ([a2afdf3](///commit/a2afdf36cd01280b741f6087b8432eeb916db199))
+* remove disable eslint ([56873f8](///commit/56873f812485da4d5125a571dd20187d3a090cde))
+* route user & refresh token ([bf2b9cc](///commit/bf2b9cc73134c3bd048bc51404a165cbf147fb4e))
+* update env example ([9e66cfa](///commit/9e66cfa2f2c47d450fce213d1aad73ebeed0975f))
+* update readme ([e8fdb74](///commit/e8fdb7409f2359002210c3bdd33c98021223b201))
+
 ## [0.2.0](///compare/v0.1.2...v0.2.0) (2020-11-22)
 
 

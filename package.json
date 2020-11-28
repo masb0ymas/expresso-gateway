@@ -1,6 +1,6 @@
 {
   "name": "express-gateway-typescript",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Api Gateway with Express TypeScript",
   "main": "src/bin/app.ts",
   "scripts": {
@@ -20,7 +20,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version",
     "release:pre": "npm run release -- --prerelease",
-    "release:minor": "npm run release -- --release-as minor"
+    "release:minor": "npm run release -- --release-as minor",
+    "release:major": "npm run release -- --release-as major"
   },
   "dependencies": {
     "axios": "^0.21.0",
