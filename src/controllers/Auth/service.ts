@@ -36,6 +36,14 @@ class AuthService {
   getProfile() {
     return this.default.get(`/v1/profile`)
   }
+
+  /**
+   *
+   * @param formData
+   */
+  logout(formData: any) {
+    return this.default.post(`/v1/logout`, formData)
+  }
 }
 
 export default AuthService
