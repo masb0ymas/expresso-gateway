@@ -75,10 +75,16 @@ routes.post(
     }
 
     await RefreshTokenService.create(formDataRefreshToken)
+    const buildResponse = BuildResponse.get({
+      message: 'Login successfully',
+      accessToken,
+      tokenType,
+      expiresIn,
+      refreshToken,
+      user: payloadToken,
+    })
 
-    return res
-      .status(200)
-      .json({ accessToken, tokenType, expiresIn, refreshToken })
+    return res.status(200).json(buildResponse)
   })
 )
 
@@ -86,11 +92,11 @@ routes.get(
   '/profile',
   Authorization,
   asyncHandler(async function getProfile(req: Request, res: Response) {
-    const { user }: any = req.state
+    const userData = req.getState('user')
 
-    const resUser = await UserService.getOne(user.id)
-    const userData = get(resUser, 'data.data', {})
-    const buildResponse = BuildResponse.get({ data: userData })
+    const resUser = await UserService.getOne(userData.id)
+    const data = get(resUser, 'data.data', {})
+    const buildResponse = BuildResponse.get({ data })
 
     return res.status(200).json(buildResponse)
   })
