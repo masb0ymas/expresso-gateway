@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](///compare/v1.0.0...v1.1.0) (2020-12-30)
+
+
+### Bug Fixes
+
+* return login & profile ([7dc8661](///commit/7dc8661c96eee632368b005fc418fc57b9dfb190))
+* script deploy ([1f016c3](///commit/1f016c3251ae7e05121cc390222c0582ef3669fe))
+* update script release ([a0e6510](///commit/a0e6510600ae824654482dc3352c2ff2440dc8ff))
+
 ## [1.0.0](///compare/v0.2.0...v1.0.0) (2020-11-28)
 
 
