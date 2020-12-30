@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](///compare/v1.1.0...v1.2.0) (2020-12-30)
+
+
+### Bug Fixes
+
+* base url docs swagger ([8529274](///commit/85292743150c9483b746d5f3c1d56b79c1ee5e20))
+
 ## [1.1.0](///compare/v1.0.0...v1.1.0) (2020-12-30)
 
 
