@@ -75,7 +75,7 @@
     "@types/helmet": "^4.0.0",
     "@types/http-errors": "^1.8.0",
     "@types/jsonwebtoken": "^8.5.0",
-    "@types/lodash": "^4.14.165",
+    "@types/lodash": "^4.14.166",
     "@types/morgan": "^1.9.2",
     "@types/ms": "^0.7.31",
     "@types/multer": "^1.4.5",
