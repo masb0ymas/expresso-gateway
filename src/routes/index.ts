@@ -8,7 +8,8 @@ const router = express.Router()
 /* Home Page. */
 router.get('/', function (req: Request, res: Response, next: NextFunction) {
   const buildResponse = BuildResponse.get({
-    message: 'Express TS, Powered by Nusantech',
+    message: 'Express Gateway TS, Support by Nusantech',
+    github: 'https://github.com/masb0ymas/express-gateway-typescript',
   })
   return res.json(buildResponse)
 })
@@ -20,10 +21,5 @@ router.get('/v1', function (req: Request, res: Response, next: NextFunction) {
 
 /* Declare Route */
 router.use('/v1', publicRoute)
-
-/* Not Found Page. */
-// router.get('*', function (req: Request, res: Response, next: NextFunction) {
-//   throw new ResponseError.NotFound('endpoint not found')
-// })
 
 export default router
