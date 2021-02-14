@@ -1,5 +1,3 @@
-import fs from 'fs'
-
 const invalidValues = [null, undefined, '', false, 0]
 
 /**
@@ -17,19 +15,4 @@ function getUniqueCodev2(length = 32) {
   return result
 }
 
-/**
- *
- * @param path - path file template html
- * @param callback
- */
-function readHTMLFile(path: any, callback: any) {
-  fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
-    if (err) {
-      callback(err)
-    } else {
-      callback(null, html)
-    }
-  })
-}
-
-export { getUniqueCodev2, readHTMLFile, invalidValues }
+export { getUniqueCodev2, invalidValues }
