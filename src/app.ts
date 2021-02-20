@@ -14,6 +14,7 @@ import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
 import winstonLogger, { winstonStream } from 'config/winston'
 
 const GenerateDoc = require('utils/GenerateDocs')
+const statusMonitor = require('express-status-monitor')()
 
 const app = express()
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(`${__dirname}/../`, 'public')))
 
 app.use(hpp())
 app.use(requestIp.mw())
+app.use(statusMonitor)
 
 app.use((req: Request, res, next) => {
   new withState(req)
