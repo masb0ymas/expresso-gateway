@@ -1330,6 +1330,13 @@
   dependencies:
     helmet "*"
 
+"@types/hpp@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@types/hpp/-/hpp-0.2.1.tgz#76b270089b0995d5a4e950b75213247e724d8c8e"
+  integrity sha512-+46c8i+nXpoJn8GJnZTvZUfggz4bKOlTtEXIxWTFb7xZI9onahMUnZ+xNdjc4vzSM/zUaUYtuEsY8ysgv68rXQ==
+  dependencies:
+    "@types/express" "*"
+
 "@types/http-errors@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-1.8.0.tgz#682477dbbbd07cd032731cb3b0e7eaee3d026b69"
@@ -1448,6 +1455,13 @@
   version "2.8.28"
   resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.28.tgz#5862b2b64aa7f7cbc76dafd7e6f06992b52c55e3"
   integrity sha512-8l2gr2OQ969ypa7hFOeKqtFoY70XkHxISV0pAwmQ2nm6CSPb1brmTmqJCGGrekCo+pAZyWlNXr+Kvo6L/1wijA==
+  dependencies:
+    "@types/node" "*"
+
+"@types/request-ip@^0.0.35":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@types/request-ip/-/request-ip-0.0.35.tgz#c30e832533296151c221532c48c10591b7edd468"
+  integrity sha512-FtI7lv1EDaZnWmaCU7ZTwfOpW76EioocaWyiSeWdfW1cDPZYzzij781A5O/UeHQUN9yjtjEcD3StTzZjKG0XEA==
   dependencies:
     "@types/node" "*"
 
