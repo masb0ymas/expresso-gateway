@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](///compare/v1.2.0...v1.3.0) (2021-02-20)
+
+
+### Features
+
+* add config commitlint ([a12f99d](///commit/a12f99d4d54b6a3504f163c3832d7a710e5bf1f0))
+* add config husky ([2eed8d4](///commit/2eed8d4b37981d6bfeb5f46146b436bcc0caf2d4))
+* **helper:** file ([6bd8803](///commit/6bd88031bcfe6a4163e0c726083dc98b9125a0a0))
+* **lib:** add hpp & request-ip ([7738644](///commit/7738644594e47d7b309712657f5eabf470cbb957))
+* **lib:** add husky & commitlint ([a417987](///commit/a41798786af8c3d286e86ceb43fa9bd729cd85c0))
+* add lib slugify ([a6abc5a](///commit/a6abc5afe38f88932dab2aefb7a35bdc9a358c83))
+
+
+### Bug Fixes
+
+* config fetcher ([3de58bb](///commit/3de58bb2d533a52dad7e0472424f4ad3e3c13198))
+* handle error multer ([02aed6b](///commit/02aed6bb88f497328b10412bc3e91c6f35a1e5a7))
+* helper with state ([badfa01](///commit/badfa010f0a3547b79c650509b26dbd88c7b5769))
+* implementation lib hpp ([facf7c6](///commit/facf7c6f8c5432640f08be81519b085e985547d8))
+* increase body parser ([189a162](///commit/189a162fb5d9ba49dba817ee58748bb469ff48ae))
+* index routes ([0230b52](///commit/0230b52412441c3abc6c033a1e9f8ab44dea6ab2))
+* refactor config multer ([9020906](///commit/902090625dbca2b80ba753d2f01c82c2a6a8bd0d))
+* update engine node ([afef120](///commit/afef1201418dda3620cb708a4fdbadae3017dcc7))
+* update readme ([fc52944](///commit/fc5294476a42df88d70be133ed5bf6c0432de61e))
+* **helper:** common ([6644522](///commit/6644522ad85615ea7d9ce917d1450ef3af3f48cb))
+* **helper:** multer ([3c6eb12](///commit/3c6eb1216ddf918441fe8936e88a7901ae355943))
+
 ## [1.2.0](///compare/v1.1.0...v1.2.0) (2020-12-30)
 
 
