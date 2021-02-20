@@ -8,10 +8,10 @@ const API_SERVICE_USER = process.env.API_SERVICE_USER || 'http://localhost:8001'
 const FetchApi = new Fetcher(API_SERVICE_USER)
 
 class AuthService {
-  private default: AxiosInstance
+  private api: AxiosInstance
 
   constructor() {
-    this.default = FetchApi.default
+    this.api = FetchApi.default
   }
 
   /**
@@ -19,7 +19,7 @@ class AuthService {
    * @param formData
    */
   register(formData: any) {
-    return this.default.post(`/v1/auth/sign-up`, formData)
+    return this.api.post(`/v1/auth/sign-up`, formData)
   }
 
   /**
@@ -27,14 +27,14 @@ class AuthService {
    * @param formData
    */
   login(formData: any) {
-    return this.default.post(`/v1/auth/sign-in`, formData)
+    return this.api.post(`/v1/auth/sign-in`, formData)
   }
 
   /**
    * Get Profile
    */
   getProfile() {
-    return this.default.get(`/v1/profile`)
+    return this.api.get(`/v1/profile`)
   }
 
   /**
@@ -42,7 +42,7 @@ class AuthService {
    * @param formData
    */
   logout(formData: any) {
-    return this.default.post(`/v1/logout`, formData)
+    return this.api.post(`/v1/logout`, formData)
   }
 }
 

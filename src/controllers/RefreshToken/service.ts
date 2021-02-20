@@ -8,10 +8,10 @@ const API_SERVICE_USER = process.env.API_SERVICE_USER || 'http://localhost:8001'
 const FetchApi = new Fetcher(API_SERVICE_USER)
 
 class RefreshTokenService {
-  private default: AxiosInstance
+  private api: AxiosInstance
 
   constructor() {
-    this.default = FetchApi.default
+    this.api = FetchApi.default
   }
 
   /**
@@ -19,7 +19,7 @@ class RefreshTokenService {
    * @param id
    */
   getToken(token: string) {
-    return this.default.get(`/v1/refresh-token?refreshToken=${token}`)
+    return this.api.get(`/v1/refresh-token?refreshToken=${token}`)
   }
 
   /**
@@ -27,7 +27,7 @@ class RefreshTokenService {
    * @param formData
    */
   create(formData: any) {
-    return this.default.post(`/v1/refresh-token`, formData)
+    return this.api.post(`/v1/refresh-token`, formData)
   }
 }
 

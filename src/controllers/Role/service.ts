@@ -21,10 +21,10 @@ interface queryAttributes {
 const FetchApi = new Fetcher(API_SERVICE_USER)
 
 class RoleService {
-  private default: AxiosInstance
+  private api: AxiosInstance
 
   constructor() {
-    this.default = FetchApi.default
+    this.api = FetchApi.default
   }
 
   /**
@@ -36,7 +36,7 @@ class RoleService {
   getAll(params: queryAttributes) {
     const query = { ...params }
     const queryParams = queryString.stringify(query)
-    return this.default.get(`/v1/role/?${queryParams}`)
+    return this.api.get(`/v1/role/?${queryParams}`)
   }
 
   /**
@@ -44,7 +44,7 @@ class RoleService {
    * @param id
    */
   getOne(id: string) {
-    return this.default.get(`/v1/role/${id}`)
+    return this.api.get(`/v1/role/${id}`)
   }
 
   /**
@@ -52,7 +52,7 @@ class RoleService {
    * @param formData
    */
   create(formData: any) {
-    return this.default.post(`/v1/role`, formData)
+    return this.api.post(`/v1/role`, formData)
   }
 
   /**
@@ -61,7 +61,7 @@ class RoleService {
    * @param formData
    */
   update(id: string, formData: any) {
-    return this.default.put(`/v1/role/${id}`, formData)
+    return this.api.put(`/v1/role/${id}`, formData)
   }
 
   /**
@@ -69,7 +69,7 @@ class RoleService {
    * @param id
    */
   destroy(id: string) {
-    return this.default.delete(`/v1/role/${id}`)
+    return this.api.delete(`/v1/role/${id}`)
   }
 }
 
