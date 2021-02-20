@@ -2,7 +2,7 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.2.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/npm-%3E%3D6.x-blue.svg" />
-  <img src="https://img.shields.io/badge/node-%3E%3D10.x-blue.svg" />
+  <img src="https://img.shields.io/badge/node-%3E%3D12.x-blue.svg" />
   <a href="https://github.com/masb0ymas/express-gateway-typescript#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -21,7 +21,7 @@
 ## Prerequisites
 
 - npm >= `v6.x`
-- node >= `v10.x`
+- node >= `v12.x`
 - eslint >= `v7.x`
 - Familiar with TypeScript 💪
 
