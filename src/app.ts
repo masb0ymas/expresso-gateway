@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import logger from 'morgan'
 import requestIp from 'request-ip'
 import bodyParser from 'body-parser'
+import userAgent from 'express-useragent'
 import cookieParser from 'cookie-parser'
 import indexRouter from 'routes'
 import withState from 'helpers/withState'
@@ -14,7 +15,6 @@ import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
 import winstonLogger, { winstonStream } from 'config/winston'
 
 const GenerateDoc = require('utils/GenerateDocs')
-const statusMonitor = require('express-status-monitor')()
 
 const app = express()
 
@@ -31,10 +31,10 @@ app.use(cookieParser())
 app.use(express.static(path.join(`${__dirname}/../`, 'public')))
 
 app.use(hpp())
+app.use(userAgent.express())
 app.use(requestIp.mw())
-app.use(statusMonitor)
 
-app.use((req: Request, res, next) => {
+app.use((req: Request, res, next: NextFunction) => {
   new withState(req)
   next()
 })
