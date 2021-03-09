@@ -21,11 +21,14 @@ function createAxios(baseURL: string): AxiosInstance {
     // ALWAYS READ UPDATED TOKEN
     const cacheToken = Redis.get('token')
 
-    try {
-      curConfig.headers.Authorization = isEmpty(cacheToken) || ''
-    } catch (e) {
-      console.log(e)
+    if (!isEmpty(cacheToken)) {
+      try {
+        curConfig.headers.Authorization = cacheToken
+      } catch (e) {
+        console.log(e)
+      }
     }
+
     return curConfig
   })
 
