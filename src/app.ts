@@ -13,6 +13,7 @@ import indexRouter from 'routes'
 import withState from 'helpers/withState'
 import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
 import winstonLogger, { winstonStream } from 'config/winston'
+import ExpressRateLimit from 'middlewares/ExpressRateLimit'
 
 const GenerateDoc = require('utils/GenerateDocs')
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(`${__dirname}/../`, 'public')))
 app.use(hpp())
 app.use(userAgent.express())
 app.use(requestIp.mw())
+app.use(ExpressRateLimit)
 
 app.use((req: Request, res, next: NextFunction) => {
   new withState(req)
