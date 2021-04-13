@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](///compare/v1.3.0...v1.4.0) (2021-04-13)
+
+
+### Features
+
+* add middleware express rate limit ([a062d3f](///commit/a062d3fe6bd0df05ac2e93cbc0a9681cc665f901))
+* **helper:** add redis ([fa71ef9](///commit/fa71ef90879764c487480937c2bb5528a41149ad))
+* **lib:** add express status monitor ([6438c8d](///commit/6438c8da3fdeac7a32d4b941af12b85447159fea))
+* **lib:** implementation express user agent ([aea20aa](///commit/aea20aa0b64132090c1b1cfbd87e4f62662cbfb0))
+
+
+### Bug Fixes
+
+* change name axios instance to api ([3aea044](///commit/3aea044b0d615307a8613d313ce205f7c58cafad))
+* change redis to redis client ([33b6c46](///commit/33b6c46e560843c6d50d2b4f0eb14fe0d835de29))
+* config fetcher token ([08456eb](///commit/08456ebb703122310d029a7c6b413e4d3ea9eaca))
+* implementation middleware rate limit ([f744b41](///commit/f744b41edb301a71c3741f97d17594c85dea2894))
+* implementation status monitor ([170669c](///commit/170669ce4736b0b0922186220939eb7e6b0540a2))
+* import redis ([c95078b](///commit/c95078beb425c586a88a8cd49798c37281c25093))
+* improve base client to base url ([18b65bf](///commit/18b65bf71eda33002b9eb8bbd2786a7e3fdd7995))
+* improve generate docs ([6f2e064](///commit/6f2e064e9c99ef7c1f0bc11c2d813ebf8e369eda))
+* read token with redis ([9421835](///commit/9421835b2390074f0951e5f05d490799fafbba70))
+* typo fetcher ([d2942aa](///commit/d2942aa586178023e9fd1de51a46795ce17211be))
+* update env example ([cd36325](///commit/cd36325dc7f81b9e9c5ce5bd61782adfd3f0fc19))
+
 ## [1.3.0](///compare/v1.2.0...v1.3.0) (2021-02-20)
 
 
