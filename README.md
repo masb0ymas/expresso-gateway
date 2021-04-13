@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to express-gateway-typescript 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.3.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.4.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/npm-%3E%3D6.x-blue.svg" />
   <img src="https://img.shields.io/badge/node-%3E%3D12.x-blue.svg" />
   <a href="https://github.com/masb0ymas/express-gateway-typescript#readme" target="_blank">
