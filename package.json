@@ -65,7 +65,7 @@
     "pug": "^3.0.1",
     "query-string": "^7.0.0",
     "rate-limiter-flexible": "^2.2.1",
-    "redis": "^3.0.2",
+    "redis": "^3.1.1",
     "request-ip": "^2.1.3",
     "slugify": "^1.5.0",
     "swagger-jsdoc": "6.1.0",
