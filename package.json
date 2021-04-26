@@ -1,6 +1,6 @@
 {
   "name": "barista-expresso",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Api Gateway with Express TypeScript",
   "main": "src/bin/app.ts",
   "repository": {
