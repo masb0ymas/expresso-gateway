@@ -1,22 +1,18 @@
-<h1 align="center">Welcome to express-gateway-typescript 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.4.0-blue.svg?cacheSeconds=2592000" />
-  <img src="https://img.shields.io/badge/npm-%3E%3D6.x-blue.svg" />
-  <img src="https://img.shields.io/badge/node-%3E%3D12.x-blue.svg" />
-  <a href="https://github.com/masb0ymas/express-gateway-typescript#readme" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-  <a href="https://github.com/masb0ymas/express-gateway-typescript/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/masb0ymas/express-gateway-typescript/blob/main/LICENSE.md" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-</p>
+<h1 align="center">barista expresso</h1>
+<h3 align="center">( Express Gateway TS )</h3>
+<br/>
 
-> Api Gateway with Express TypeScript
+[![version](https://img.shields.io/badge/version-1.4.0-blue.svg?cacheSeconds=2592000)](https://github.com/masb0ymas/barista-expresso/releases/tag/v1.4.0)
+[![Node](https://img.shields.io/badge/Node-12.14.0-informational?logo=node.js&color=43853D)](https://nodejs.org/docs/latest-v12.x/api/index.html)
+[![TypeScript](https://img.shields.io/badge/Typescript-4.2.4-informational?logo=typescript&color=2F74C0)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-4.17.1-informational?logo=express&color=B1B1B1)](https://expressjs.com/)
+[![documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/masb0ymas/barista-expresso#readme)
+[![maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/masb0ymas/barista-expresso/graphs/commit-activity)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/masb0ymas/barista-expresso/blob/master/LICENSE.md)
 
-### 🏠 [Homepage](https://github.com/masb0ymas/express-gateway-typescript)
+> API Gateway with Express TypeScript
+
+### 🏠 [Homepage](https://github.com/masb0ymas/barista-expresso)
 
 ## Prerequisites
 
@@ -42,7 +38,7 @@
 clone this repo with `https` / `ssh` / `github cli`
 
 ```sh
-git clone https://github.com/masb0ymas/express-gateway-typescript
+git clone https://github.com/masb0ymas/barista-expresso
 ```
 
 After cloning this repo, make sure you have `duplicated` the `.env.example` file to `.env`, don't let the .env.example file be deleted or renamed.

@@ -1,11 +1,11 @@
 {
-  "name": "express-gateway-typescript",
+  "name": "barista-expresso",
   "version": "1.4.0",
   "description": "Api Gateway with Express TypeScript",
   "main": "src/bin/app.ts",
   "repository": {
     "type": "git",
-    "url": "express-gateway-typescript"
+    "url": "barista-expresso"
   },
   "keywords": [
     "express",
