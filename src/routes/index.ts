@@ -1,16 +1,28 @@
 import express, { Request, Response, NextFunction } from 'express'
-import BuildResponse from 'modules/Response/BuildResponse'
-import ResponseError from 'modules/Response/ResponseError'
+import BuildResponse from '@expresso/modules/Response/BuildResponse'
+import ResponseError from '@expresso/modules/Response/ResponseError'
+import { BASE_URL_SERVER } from 'config/baseURL'
 import publicRoute from './public'
 
+const { NODE_ENV } = process.env
 const router = express.Router()
 
 /* Home Page. */
 router.get('/', function (req: Request, res: Response, next: NextFunction) {
-  const buildResponse = BuildResponse.get({
-    message: 'Express Gateway TS, Support by Nusantech',
-    github: 'https://github.com/masb0ymas/express-gateway-typescript',
-  })
+  let responseData: any = {
+    message: 'barista expresso ( Express Gateway TS )',
+    maintaner: 'masb0ymas, <n.fajri@outlook.com>',
+    source: 'https://github.com/masb0ymas/barista-expresso',
+  }
+
+  if (NODE_ENV !== 'production') {
+    responseData = {
+      ...responseData,
+      docs: `${BASE_URL_SERVER}/v1/api-docs`,
+    }
+  }
+
+  const buildResponse = BuildResponse.get(responseData)
   return res.json(buildResponse)
 })
 

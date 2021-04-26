@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import asyncHandler from 'helpers/asyncHandler'
-import BuildResponse from 'modules/Response/BuildResponse'
+import asyncHandler from '@expresso/helpers/asyncHandler'
+import BuildResponse from '@expresso/modules/Response/BuildResponse'
 import routes from 'routes/public'
 import Role from 'controllers/Role/service'
 import Authorization from 'middlewares/Authorization'

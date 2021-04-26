@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 import ms from 'ms'
 import jwt from 'jsonwebtoken'
-import asyncHandler from 'helpers/asyncHandler'
+import asyncHandler from '@expresso/helpers/asyncHandler'
 import routes from 'routes/public'
 import RefreshToken from 'controllers/RefreshToken/service'
 import Authorization from 'middlewares/Authorization'
-import ResponseError from 'modules/Response/ResponseError'
-import { verifyRefreshToken } from 'helpers/Token'
+import ResponseError from '@expresso/modules/Response/ResponseError'
+import { verifyRefreshToken } from '@expresso/helpers/Token'
 import { get, isObject } from 'lodash'
 
 interface verifyRefreshTokenAttributes {
