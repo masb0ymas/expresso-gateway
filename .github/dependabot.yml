@@ -1,0 +1,144 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "22:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.32
+    - 14.14.33
+    - 14.14.34
+    - 14.14.35
+    - 14.14.39
+    - 14.14.41
+    - 15.0.0
+  - dependency-name: googleapis
+    versions:
+    - 71.0.0
+    - 72.0.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.16
+    - 7.13.10
+    - 7.13.16
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.4.0
+  - dependency-name: eslint-import-resolver-babel-module
+    versions:
+    - 5.3.0
+  - dependency-name: helmet
+    versions:
+    - 4.5.0
+  - dependency-name: date-fns
+    versions:
+    - 2.19.0
+    - 2.21.0
+  - dependency-name: eslint-config-prettier
+    versions:
+    - 7.2.0
+    - 8.0.0
+    - 8.2.0
+  - dependency-name: redis
+    versions:
+    - 3.1.1
+  - dependency-name: "@typescript-eslint/eslint-plugin"
+    versions:
+    - 4.14.1
+    - 4.14.2
+    - 4.15.2
+    - 4.16.1
+    - 4.17.0
+    - 4.18.0
+    - 4.19.0
+    - 4.20.0
+    - 4.21.0
+    - 4.22.0
+  - dependency-name: "@typescript-eslint/parser"
+    versions:
+    - 4.14.1
+    - 4.14.2
+    - 4.15.2
+    - 4.16.1
+    - 4.17.0
+    - 4.18.0
+    - 4.19.0
+    - 4.20.0
+    - 4.21.0
+    - 4.22.0
+  - dependency-name: ioredis
+    versions:
+    - 4.24.3
+    - 4.24.4
+    - 4.24.5
+    - 4.24.6
+    - 4.25.0
+    - 4.26.0
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.16
+    - 7.13.12
+    - 7.13.15
+  - dependency-name: "@types/ioredis"
+    versions:
+    - 4.22.1
+    - 4.22.2
+    - 4.22.3
+  - dependency-name: husky
+    versions:
+    - 5.1.1
+    - 5.2.0
+    - 6.0.0
+  - dependency-name: "@babel/node"
+    versions:
+    - 7.13.10
+    - 7.13.12
+    - 7.13.13
+  - dependency-name: slugify
+    versions:
+    - 1.5.0
+  - dependency-name: query-string
+    versions:
+    - 6.13.8
+    - 7.0.0
+  - dependency-name: "@types/jsonwebtoken"
+    versions:
+    - 8.5.1
+  - dependency-name: swagger-jsdoc
+    versions:
+    - 6.0.1
+    - 6.0.5
+    - 6.0.9
+    - 6.1.0
+  - dependency-name: "@babel/plugin-transform-runtime"
+    versions:
+    - 7.12.15
+    - 7.13.10
+    - 7.13.6
+    - 7.13.7
+    - 7.13.9
+  - dependency-name: "@commitlint/config-conventional"
+    versions:
+    - 12.0.1
+  - dependency-name: "@commitlint/cli"
+    versions:
+    - 12.0.1
+  - dependency-name: "@babel/plugin-proposal-class-properties"
+    versions:
+    - 7.13.0
+  - dependency-name: "@babel/runtime"
+    versions:
+    - 7.13.6
+    - 7.13.7
+    - 7.13.9
+  - dependency-name: "@babel/plugin-proposal-object-rest-spread"
+    versions:
+    - 7.13.0
+    - 7.13.8
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.16
