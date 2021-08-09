@@ -12,7 +12,7 @@ router.get('/', function (req: Request, res: Response, next: NextFunction) {
   let responseData: any = {
     message: 'barista expresso ( Express Gateway TS )',
     maintaner: 'masb0ymas, <n.fajri@outlook.com>',
-    source: 'https://github.com/masb0ymas/barista-expresso',
+    source: 'https://github.com/masb0ymas/expresso-gateway',
   }
 
   if (NODE_ENV !== 'production') {

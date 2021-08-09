@@ -2,17 +2,17 @@
 <h3 align="center">( Express Gateway TS )</h3>
 <br/>
 
-[![version](https://img.shields.io/badge/version-1.5.0-blue.svg?cacheSeconds=2592000)](https://github.com/masb0ymas/barista-expresso/releases/tag/v1.5.0)
+[![version](https://img.shields.io/badge/version-1.5.0-blue.svg?cacheSeconds=2592000)](https://github.com/masb0ymas/expresso-gateway/releases/tag/v1.5.0)
 [![Node](https://img.shields.io/badge/Node-12.14.0-informational?logo=node.js&color=43853D)](https://nodejs.org/docs/latest-v12.x/api/index.html)
 [![TypeScript](https://img.shields.io/badge/Typescript-4.2.4-informational?logo=typescript&color=2F74C0)](https://www.typescriptlang.org/)
 [![Express](https://img.shields.io/badge/Express-4.17.1-informational?logo=express&color=B1B1B1)](https://expressjs.com/)
-[![documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/masb0ymas/barista-expresso#readme)
-[![maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/masb0ymas/barista-expresso/graphs/commit-activity)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/masb0ymas/barista-expresso/blob/master/LICENSE.md)
+[![documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/masb0ymas/expresso-gateway#readme)
+[![maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/masb0ymas/expresso-gateway/graphs/commit-activity)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/masb0ymas/expresso-gateway/blob/master/LICENSE.md)
 
 > API Gateway with Express TypeScript
 
-### 🏠 [Homepage](https://github.com/masb0ymas/barista-expresso)
+### 🏠 [Homepage](https://github.com/masb0ymas/expresso-gateway)
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@
 clone this repo with `https` / `ssh` / `github cli`
 
 ```sh
-git clone https://github.com/masb0ymas/barista-expresso
+git clone https://github.com/masb0ymas/expresso-gateway
 ```
 
 After cloning this repo, make sure you have `duplicated` the `.env.example` file to `.env`, don't let the .env.example file be deleted or renamed.

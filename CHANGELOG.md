@@ -2,22 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.5.0](https://github.com/masb0ymas/barista-expresso/compare/v1.4.0...v1.5.0) (2021-04-26)
+## [1.5.0](https://github.com/masb0ymas/expresso-gateway/compare/v1.4.0...v1.5.0) (2021-04-26)
 
 
 ### Features
 
-* add versionrc json ([6f438f8](https://github.com/masb0ymas/barista-expresso/commit/6f438f84c4e366a6c80e397e1d8cfedf42e17b6d))
+* add versionrc json ([6f438f8](https://github.com/masb0ymas/expresso-gateway/commit/6f438f84c4e366a6c80e397e1d8cfedf42e17b6d))
 
 
 ### Bug Fixes
 
-* rename project to barista-expresso ([50ecaec](https://github.com/masb0ymas/barista-expresso/commit/50ecaecbafbd3d26cb684d689dca09aecde0f3c9))
+* rename project to expresso-gateway ([50ecaec](https://github.com/masb0ymas/expresso-gateway/commit/50ecaecbafbd3d26cb684d689dca09aecde0f3c9))
 
 
 ### Other Commit
 
-* move base code to [@expresso](null/expresso) folder ([8084ab6](https://github.com/masb0ymas/barista-expresso/commit/8084ab64758f9cbff9f58ed17f058df371196f88))
+* move base code to [@expresso](null/expresso) folder ([8084ab6](https://github.com/masb0ymas/expresso-gateway/commit/8084ab64758f9cbff9f58ed17f058df371196f88))
 
 ## [1.4.0](///compare/v1.3.0...v1.4.0) (2021-04-13)
 
