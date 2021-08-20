@@ -1,19 +1,18 @@
-import createError from 'http-errors'
-import express, { Request, Response, NextFunction } from 'express'
-import path from 'path'
-import cors from 'cors'
-import hpp from 'hpp'
-import helmet from 'helmet'
-import logger from 'morgan'
-import requestIp from 'request-ip'
-import bodyParser from 'body-parser'
-import userAgent from 'express-useragent'
-import cookieParser from 'cookie-parser'
-import indexRouter from 'routes'
 import withState from '@expresso/helpers/withState'
-import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
 import winstonLogger, { winstonStream } from 'config/winston'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import express, { NextFunction, Request, Response } from 'express'
+import userAgent from 'express-useragent'
+import helmet from 'helmet'
+import hpp from 'hpp'
+import createError from 'http-errors'
+import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
 import ExpressRateLimit from 'middlewares/ExpressRateLimit'
+import logger from 'morgan'
+import path from 'path'
+import requestIp from 'request-ip'
+import indexRouter from 'routes'
 
 const GenerateDoc = require('utils/GenerateDocs')
 
@@ -27,8 +26,8 @@ app.set('view engine', 'pug')
 app.use(helmet())
 app.use(cors())
 app.use(logger('combined', { stream: winstonStream }))
-app.use(bodyParser.json({ limit: '100mb', type: 'application/json' }))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json({ limit: '100mb', type: 'application/json' }))
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(`${__dirname}/../`, 'public')))
 

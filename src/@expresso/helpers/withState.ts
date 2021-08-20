@@ -73,10 +73,10 @@ class withState {
   }
 
   getSingleArrayFile(name: string) {
-    const data = (getterObject(
+    const data = getterObject(
       this.req,
       ['files', name, '0'].join('.')
-    ) as unknown) as Express.Multer.File
+    ) as unknown as Express.Multer.File
     if (data) {
       return data
     }
