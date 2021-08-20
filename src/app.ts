@@ -8,6 +8,7 @@ import helmet from 'helmet'
 import hpp from 'hpp'
 import createError from 'http-errors'
 import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
+import ExpressErrorYup from 'middlewares/ExpressErrorYup'
 import ExpressRateLimit from 'middlewares/ExpressRateLimit'
 import logger from 'morgan'
 import path from 'path'
@@ -49,6 +50,7 @@ if (NODE_ENV !== 'production') {
 
 // Initial Route
 app.use(indexRouter)
+app.use('/', ExpressErrorYup)
 app.use(ExpressErrorResponse)
 
 // catch 404 and forward to error handler
