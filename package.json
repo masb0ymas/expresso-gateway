@@ -96,7 +96,7 @@
     "@types/express-useragent": "^1.0.0",
     "@types/hpp": "^0.2.1",
     "@types/http-errors": "^1.8.1",
-    "@types/ioredis": "^4.26.7",
+    "@types/ioredis": "^4.27.4",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/lodash": "^4.14.172",
     "@types/morgan": "^1.9.2",
