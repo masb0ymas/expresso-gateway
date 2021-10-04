@@ -1633,10 +1633,10 @@
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-1.8.1.tgz#e81ad28a60bee0328c6d2384e029aec626f1ae67"
   integrity sha512-e+2rjEwK6KDaNOm5Aa9wNGgyS9oSZU/4pfSMMPYNOfjvFI0WVXm29+ITRFr6aKDvvKo7uU1jV68MW4ScsfDi7Q==
 
-"@types/ioredis@^4.26.7":
-  version "4.26.7"
-  resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.26.7.tgz#8c8174b9db38f71f0e372174c66a031a2ca7d9cf"
-  integrity sha512-TOGRR+e1to00CihjgPNygD7+G7ruVnMi62YdIvGUBRfj11k/aWq+Fv5Ea8St0Oy56NngTBfA8GvLn1uvHvhX6Q==
+"@types/ioredis@^4.27.6":
+  version "4.27.6"
+  resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.27.6.tgz#06f2826ca9bcf4e9c179cd11417a4d0413903cba"
+  integrity sha512-3FeeDlVQ2sdbvU436XnZzOiDMMgFbKfIsiUF2BnJnH7xxqCbJ1teJwfcu9fLwnfmV0qH2W1Vg3jFrtOehNIkMA==
   dependencies:
     "@types/node" "*"
 
