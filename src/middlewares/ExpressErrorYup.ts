@@ -1,17 +1,21 @@
 import { NextFunction, Request, Response } from 'express'
 import { ValidationError } from 'yup'
+import chalk from 'chalk'
 
 async function ExpressErrorYup(
   err: any,
   req: Request,
   res: Response,
   next: NextFunction
-) {
+): Promise<Response<any, Record<string, any>> | undefined> {
   if (err instanceof ValidationError) {
-    console.log('ERROR YUP VALIDATION!!!')
+    const errType = `Yup Validation Error:`
+    const message = err.errors.join('<br/>') || 'Yup Validation Error !'
+    console.log(chalk.red(errType), chalk.green(message))
+
     const error = {
       code: 422,
-      message: err.errors.join('<br/>') || 'Yup Validation Error !',
+      message,
       errors:
         err.inner.length > 0
           ? err.inner.reduce((acc: any, curVal: any) => {

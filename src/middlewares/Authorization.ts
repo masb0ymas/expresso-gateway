@@ -1,12 +1,16 @@
-import { NextFunction, Request, Response } from 'express'
 import { currentToken, verifyAccessToken } from '@expresso/helpers/Token'
-import { isEmpty } from 'lodash'
+import { NextFunction, Request, Response } from 'express'
+import _ from 'lodash'
 
-async function Authorization(req: Request, res: Response, next: NextFunction) {
+async function Authorization(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<Response<any, Record<string, any>> | undefined> {
   const getToken = currentToken(req)
   const token = verifyAccessToken(getToken)
 
-  if (isEmpty(token?.data)) {
+  if (_.isEmpty(token?.data)) {
     return res.status(401).json({
       code: 401,
       message: token?.message,

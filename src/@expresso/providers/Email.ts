@@ -1,9 +1,14 @@
-import nodemailer from 'nodemailer'
-import mg from 'nodemailer-mailgun-transport'
+/* eslint-disable @typescript-eslint/no-invalid-void-type */
+import ResponseError from '@expresso/modules/Response/ResponseError'
+import chalk from 'chalk'
+import dotenv from 'dotenv'
+import { Headers } from 'gaxios'
 import { google } from 'googleapis'
 import { isEmpty } from 'lodash'
+import nodemailer from 'nodemailer'
+import mg from 'nodemailer-mailgun-transport'
 
-require('dotenv').config()
+dotenv.config()
 
 const {
   APP_NAME,
@@ -25,9 +30,14 @@ const isMailgunAPI = !isEmpty(MAILGUN_API_KEY) || !isEmpty(MAILGUN_DOMAIN)
 
 class EmailProvider {
   private mailConfig: nodemailer.SentMessageInfo
+  private mailOptions: nodemailer.SendMailOptions
 
-  private mailOptions: nodemailer.SendMailOptions | undefined
-
+  /**
+   * Send
+   * @param to
+   * @param subject
+   * @param template
+   */
   public send = (
     to: string | string[],
     subject: string,
@@ -40,7 +50,11 @@ class EmailProvider {
     this.sendMail(dest, subject, text)
   }
 
-  private setMailConfig = (): nodemailer.SentMessageInfo => {
+  /**
+   * Set Mail Config
+   * @returns
+   */
+  private readonly setMailConfig = (): nodemailer.SentMessageInfo => {
     const configTransport: nodemailer.SentMessageInfo = {
       service: MAIL_DRIVER,
       auth: {
@@ -60,7 +74,7 @@ class EmailProvider {
         refresh_token: OAUTH_REFRESH_TOKEN,
       })
 
-      const accessToken = async () => {
+      const accessToken = async (): Promise<Headers> => {
         const result = await oauth2Client.getRequestHeaders()
         return result
       }
@@ -86,7 +100,14 @@ class EmailProvider {
     return configTransport
   }
 
-  private setMailOptions = (
+  /**
+   * Set Mail Options
+   * @param dest
+   * @param subject
+   * @param text
+   * @returns
+   */
+  private readonly setMailOptions = (
     dest: string,
     subject: string,
     text: string
@@ -99,7 +120,13 @@ class EmailProvider {
     }
   }
 
-  private sendMail = (
+  /**
+   * Send Mail
+   * @param dest
+   * @param subject
+   * @param text
+   */
+  private readonly sendMail = (
     dest: string,
     subject: string,
     text: string
@@ -107,22 +134,24 @@ class EmailProvider {
     this.mailConfig = isMailgunAPI
       ? mg(this.setMailConfig())
       : this.setMailConfig()
+
     this.mailOptions = this.setMailOptions(dest, subject, text)
+
     // Nodemailer Transport
-    const transporter: nodemailer.Transporter = nodemailer.createTransport(
-      this.mailConfig
-    )
-    transporter.sendMail(
-      this.mailOptions,
-      // @ts-ignore
-      (error: Error, info: nodemailer.SentMessageInfo) => {
-        if (error) {
-          console.log(error)
-        } else {
-          console.log('successfully', info)
-        }
+    const transporter = nodemailer.createTransport(this.mailConfig)
+
+    transporter.sendMail(this.mailOptions, (err, info) => {
+      if (err) {
+        const errMessage = `${chalk.red(
+          'Nodemailer Error:'
+        )} Something went wrong!, ${err.message}`
+        console.log(errMessage)
+        throw new ResponseError.BadRequest(errMessage)
       }
-    )
+
+      const sending = chalk.cyan('email has been sent')
+      console.log(`Success, ${sending}`, info)
+    })
   }
 }
 

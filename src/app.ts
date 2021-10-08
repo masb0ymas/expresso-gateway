@@ -1,79 +1,132 @@
+import i18next from '@config/i18nextConfig'
+import winstonLogger, { winstonStream } from '@config/Logger'
+import allowedOrigins from '@expresso/constants/ConstAllowedOrigins'
 import withState from '@expresso/helpers/withState'
-import winstonLogger, { winstonStream } from 'config/winston'
+import ResponseError from '@expresso/modules/Response/ResponseError'
+import { optionsSwaggerUI, swaggerSpec } from '@expresso/utils/DocsSwagger'
+import ExpressErrorResponse from '@middlewares/ExpressErrorResponse'
+import ExpressErrorYup from '@middlewares/ExpressErrorYup'
+import ExpressRateLimit from '@middlewares/ExpressRateLimit'
+import indexRoutes from '@routes/index'
+import chalk from 'chalk'
+import compression from 'compression'
 import cookieParser from 'cookie-parser'
-import cors from 'cors'
-import express, { NextFunction, Request, Response } from 'express'
-import userAgent from 'express-useragent'
+import Cors from 'cors'
+import dotenv from 'dotenv'
+import Express, { Application, NextFunction, Request, Response } from 'express'
+import UserAgent from 'express-useragent'
 import helmet from 'helmet'
 import hpp from 'hpp'
-import createError from 'http-errors'
-import ExpressErrorResponse from 'middlewares/ExpressErrorResponse'
-import ExpressErrorYup from 'middlewares/ExpressErrorYup'
-import ExpressRateLimit from 'middlewares/ExpressRateLimit'
-import logger from 'morgan'
+import i18nextMiddleware from 'i18next-http-middleware'
+import Logger from 'morgan'
 import path from 'path'
 import requestIp from 'request-ip'
-import indexRouter from 'routes'
+import swaggerUI from 'swagger-ui-express'
 
-const GenerateDoc = require('utils/GenerateDocs')
+dotenv.config()
 
-const { NODE_ENV } = process.env
-const app = express()
+const NODE_ENV = process.env.NODE_ENV ?? 'development'
+const APP_PORT = Number(process.env.PORT) ?? 8000
 
-// view engine setup
-app.set('views', path.join(`${__dirname}/../`, 'views'))
-app.set('view engine', 'pug')
-
-app.use(helmet())
-app.use(cors())
-app.use(logger('combined', { stream: winstonStream }))
-app.use(express.json({ limit: '100mb', type: 'application/json' }))
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use(express.static(path.join(`${__dirname}/../`, 'public')))
-
-app.use(hpp())
-app.use(userAgent.express())
-app.use(requestIp.mw())
-app.use(ExpressRateLimit)
-
-app.use((req: Request, res, next: NextFunction) => {
-  new withState(req)
-  next()
-})
-
-// disable for production mode
-if (NODE_ENV !== 'production') {
-  // Initial Docs Swagger
-  GenerateDoc(app)
+const optCors: Cors.CorsOptions = {
+  origin: allowedOrigins,
 }
 
-// Initial Route
-app.use(indexRouter)
-app.use('/', ExpressErrorYup)
-app.use(ExpressErrorResponse)
+class App {
+  private readonly application: Application
+  private readonly port: number | string
 
-// catch 404 and forward to error handler
-app.use(function (req: Request, res: Response, next: NextFunction) {
-  next(createError(404))
-})
+  constructor() {
+    this.port = APP_PORT
+    this.application = Express()
+    this.plugins()
 
-// error handler
-app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
+    // docs swagger disable for production mode
+    if (NODE_ENV !== 'production') {
+      this.docsSwagger()
+    }
 
-  // add this line to include winston logging
-  winstonLogger.error(
-    `${err.status || 500} - ${err.message} - ${req.originalUrl} - ${
-      req.method
-    } - ${req.ip}`
-  )
+    this.routes()
+  }
 
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
-})
+  private plugins(): void {
+    this.application.use(helmet())
+    this.application.use(Cors(optCors))
+    this.application.use(Logger('combined', { stream: winstonStream }))
+    this.application.use(Express.urlencoded({ extended: true }))
+    this.application.use(
+      Express.json({ limit: '200mb', type: 'application/json' })
+    )
+    this.application.use(cookieParser())
+    this.application.use(compression())
+    this.application.use(Express.static(path.resolve(`${__dirname}/../public`)))
+    this.application.use(hpp())
+    this.application.use(requestIp.mw())
+    this.application.use(UserAgent.express())
+    this.application.use(i18nextMiddleware.handle(i18next))
+    this.application.use(ExpressRateLimit)
+    this.application.use(function (
+      req: Request,
+      res: Response,
+      next: NextFunction
+    ) {
+      new withState(req)
+      next()
+    })
+  }
 
-module.exports = app
+  private docsSwagger(): void {
+    this.application.get('/v1/api-docs.json', (req: Request, res: Response) => {
+      res.setHeader('Content-Type', 'application/json')
+      res.send(swaggerSpec)
+    })
+
+    this.application.use('/v1/api-docs', swaggerUI.serve)
+    this.application.get(
+      '/v1/api-docs',
+      swaggerUI.setup(swaggerSpec, optionsSwaggerUI)
+    )
+  }
+
+  private routes(): void {
+    this.application.use(indexRoutes)
+
+    // Catch error 404 endpoint not found
+    this.application.use('*', function (req: Request, res: Response) {
+      throw new ResponseError.NotFound(
+        `Sorry, HTTP resource you are looking for was not found.`
+      )
+    })
+  }
+
+  public run(): void {
+    this.application.use(ExpressErrorYup)
+    this.application.use(ExpressErrorResponse)
+
+    // Error handler
+    this.application.use(function (err: any, req: Request, res: Response) {
+      // Set locals, only providing error in development
+      res.locals.message = err.message
+      res.locals.error = req.app.get('env') === 'development' ? err : {}
+
+      // Add this line to include winston logging
+      winstonLogger.error(
+        `${err.status || 500} - ${err.message} - ${req.originalUrl} - ${
+          req.method
+        } - ${req.ip}`
+      )
+
+      // Render the error page
+      res.status(err.status || 500)
+      res.render('error')
+    })
+
+    // Run listener
+    this.application.listen(this.port, () => {
+      const host = chalk.cyan(`http://localhost:${this.port}`)
+      console.log(`Server listening on ${host} & Env: ${chalk.blue(NODE_ENV)}`)
+    })
+  }
+}
+
+export default App

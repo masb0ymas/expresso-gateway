@@ -1,48 +1,44 @@
-import { AxiosInstance } from 'axios'
-import Fetcher from 'config/Fetcher'
+import dotenv from 'dotenv'
+import FetchApi from '@config/Fetcher'
+import { AxiosResponse } from 'axios'
 
-require('dotenv').config()
+dotenv.config()
 
-const API_SERVICE_USER = process.env.API_SERVICE_USER || 'http://localhost:8001'
+const API_SERVICE_USER = process.env.API_SERVICE_USER ?? 'http://localhost:8001'
 
-const FetchApi = new Fetcher(API_SERVICE_USER)
+const Fetcher = new FetchApi(API_SERVICE_USER)
 
 class AuthService {
-  private api: AxiosInstance
+  private static readonly axiosInstance = Fetcher.default
 
-  constructor() {
-    this.api = FetchApi.default
+  /**
+   *
+   * @param formData
+   * @returns
+   */
+  public static async signUp(formData: any): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(`/v1/auth/sign-up`, formData)
+    return response
   }
 
   /**
    *
    * @param formData
+   * @returns
    */
-  register(formData: any) {
-    return this.api.post(`/v1/auth/sign-up`, formData)
+  public static async signIn(formData: any): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(`/v1/auth/sign-in`, formData)
+    return response
   }
 
   /**
    *
    * @param formData
+   * @returns
    */
-  login(formData: any) {
-    return this.api.post(`/v1/auth/sign-in`, formData)
-  }
-
-  /**
-   * Get Profile
-   */
-  getProfile() {
-    return this.api.get(`/v1/profile`)
-  }
-
-  /**
-   *
-   * @param formData
-   */
-  logout(formData: any) {
-    return this.api.post(`/v1/logout`, formData)
+  public static async logout(formData: any): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(`/v1/logout`, formData)
+    return response
   }
 }
 

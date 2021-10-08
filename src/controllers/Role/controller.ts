@@ -1,77 +1,96 @@
-import { Request, Response } from 'express'
 import asyncHandler from '@expresso/helpers/asyncHandler'
-import BuildResponse from '@expresso/modules/Response/BuildResponse'
-import routes from 'routes/public'
-import Role from 'controllers/Role/service'
-import Authorization from 'middlewares/Authorization'
+import HttpResponse from '@expresso/modules/Response/HttpResponse'
+import Authorization from '@middlewares/Authorization'
+import route from '@routes/v1'
+import { Request, Response } from 'express'
+import RoleService from './service'
 
-const RoleService = new Role()
-
-routes.get(
+route.get(
   '/role',
-  asyncHandler(async function getAll(req: Request, res: Response) {
+  asyncHandler(async function findAll(req: Request, res: Response) {
     const query = req.getQuery()
 
-    const resData = await RoleService.getAll(query)
-    const { message, data, total } = resData.data
-    const buildResponse = BuildResponse.get({ message, data, total })
+    const response = await RoleService.findAll(query)
 
-    return res.status(200).json(buildResponse)
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
   })
 )
 
-routes.get(
+route.get(
   '/role/:id',
-  asyncHandler(async function getOne(req: Request, res: Response) {
+  asyncHandler(async function findById(req: Request, res: Response) {
     const { id } = req.getParams()
 
-    const resData = await RoleService.getOne(id)
-    const { message, data } = resData.data
-    const buildResponse = BuildResponse.get({ message, data })
+    const response = await RoleService.findById(id)
 
-    return res.status(200).json(buildResponse)
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
   })
 )
 
-routes.post(
+route.post(
   '/role',
   Authorization,
-  asyncHandler(async function createData(req: Request, res: Response) {
+  asyncHandler(async function create(req: Request, res: Response) {
     const formData = req.getBody()
 
-    const resData = await RoleService.create(formData)
-    const { message, data } = resData.data
-    const buildResponse = BuildResponse.created({ message, data })
+    const response = await RoleService.create(formData)
 
-    return res.status(201).json(buildResponse)
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
   })
 )
 
-routes.put(
+route.put(
   '/role/:id',
   Authorization,
-  asyncHandler(async function updateData(req: Request, res: Response) {
-    const formData = req.getBody()
+  asyncHandler(async function update(req: Request, res: Response) {
     const { id } = req.getParams()
+    const formData = req.getBody()
 
-    const resData = await RoleService.update(id, formData)
-    const { message, data } = resData.data
-    const buildResponse = BuildResponse.updated({ message, data })
+    const response = await RoleService.update(id, formData)
 
-    return res.status(200).json(buildResponse)
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
   })
 )
 
-routes.delete(
-  '/role/:id',
+route.put(
+  '/role/restore/:id',
   Authorization,
-  asyncHandler(async function deleteData(req: Request, res: Response) {
+  asyncHandler(async function restore(req: Request, res: Response) {
     const { id } = req.getParams()
 
-    const resData = await RoleService.destroy(id)
-    const { message } = resData.data
-    const buildResponse = BuildResponse.deleted({ message })
+    const response = await RoleService.restore(id)
 
-    return res.status(200).json(buildResponse)
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
+  })
+)
+
+route.delete(
+  '/role/soft-delete/:id',
+  Authorization,
+  asyncHandler(async function softDelete(req: Request, res: Response) {
+    const { id } = req.getParams()
+
+    const response = await RoleService.softDelete(id)
+
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
+  })
+)
+
+route.delete(
+  '/role/force-delete/:id',
+  Authorization,
+  asyncHandler(async function forceDelete(req: Request, res: Response) {
+    const { id } = req.getParams()
+
+    const response = await RoleService.forceDelete(id)
+
+    const httpResponse = HttpResponse.get(response.data)
+    return res.status(200).json(httpResponse)
   })
 )

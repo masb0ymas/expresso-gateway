@@ -1,8 +1,8 @@
+import ResponseError from '@expresso/modules/Response/ResponseError'
+import { Request } from 'express'
 import multer from 'multer'
 import path from 'path'
-import { Request, Express } from 'express'
 import slugify from 'slugify'
-import ResponseError from '@expresso/modules/Response/ResponseError'
 
 interface MulterSetupProps {
   dest?: string
@@ -16,12 +16,17 @@ interface MulterSetupProps {
 const defaultFieldSize = 10 * 1024 * 1024 // 10mb
 const defaultFileSize = 1 * 1024 * 1024 // 1mb
 const defaultDestination = 'public/uploads/'
-const defaultAllowedExt = ['.png', '.jpg', '.jpeg', '.xlsx', '.xls', '.pdf']
 
-const useMulter = (props: MulterSetupProps) => {
+export const allowedImage = ['.png', '.jpg', '.jpeg']
+export const allowedExcel = ['.xlsx', '.xls']
+export const allowedPDF = ['.pdf']
+
+const defaultAllowedExt = [...allowedImage, ...allowedExcel, ...allowedPDF]
+
+const useMulter = (props: MulterSetupProps): multer.Multer => {
   // config storage
   const storage = multer.diskStorage({
-    destination: props.dest || defaultDestination,
+    destination: props.dest ?? defaultDestination,
     filename(req: Request, file: Express.Multer.File, cb): void {
       const slugFilename = slugify(file.originalname, {
         replacement: '_',
@@ -36,7 +41,7 @@ const useMulter = (props: MulterSetupProps) => {
     storage,
     fileFilter(req, file, cb) {
       const ext = path.extname(file.originalname)
-      const allowedExt = props.allowedExt || defaultAllowedExt
+      const allowedExt = props.allowedExt ?? defaultAllowedExt
 
       if (!allowedExt.includes(ext.toLowerCase())) {
         return cb(
@@ -48,7 +53,7 @@ const useMulter = (props: MulterSetupProps) => {
 
       cb(null, true)
     },
-    limits: props.limit || {
+    limits: props.limit ?? {
       fieldSize: defaultFieldSize,
       fileSize: defaultFileSize,
     },

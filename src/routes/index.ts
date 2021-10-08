@@ -1,16 +1,19 @@
-import express, { Request, Response, NextFunction } from 'express'
-import BuildResponse from '@expresso/modules/Response/BuildResponse'
+import { BASE_URL_SERVER } from '@config/baseURL'
+import { formatDateTime } from '@expresso/helpers/Date'
+import HttpResponse from '@expresso/modules/Response/HttpResponse'
 import ResponseError from '@expresso/modules/Response/ResponseError'
-import { BASE_URL_SERVER } from 'config/baseURL'
-import publicRoute from './public'
+import v1Route from '@routes/v1'
+import Express, { Request, Response } from 'express'
 
 const { NODE_ENV } = process.env
-const router = express.Router()
+const route = Express.Router()
 
-/* Home Page. */
-router.get('/', function (req: Request, res: Response, next: NextFunction) {
+/**
+ * Index Route
+ */
+route.get('/', function (req: Request, res: Response) {
   let responseData: any = {
-    message: 'barista expresso ( Express Gateway TS )',
+    message: 'expresso-gateway',
     maintaner: 'masb0ymas, <n.fajri@outlook.com>',
     source: 'https://github.com/masb0ymas/expresso-gateway',
   }
@@ -22,16 +25,34 @@ router.get('/', function (req: Request, res: Response, next: NextFunction) {
     }
   }
 
-  const buildResponse = BuildResponse.get(responseData)
-  return res.json(buildResponse)
+  const httpResponse = HttpResponse.get(responseData)
+  return res.json(httpResponse)
+})
+
+route.get('/health', function (req: Request, res: Response) {
+  const startUsage = process.cpuUsage()
+
+  const status = {
+    uptime: process.uptime(),
+    message: 'Ok',
+    timezone: 'ID',
+    date: formatDateTime(new Date()),
+    node: process.version,
+    memory: process.memoryUsage,
+    platform: process.platform,
+    cpuUsage: process.cpuUsage(startUsage),
+  }
+
+  res.status(200).json({ status })
 })
 
 /* Forbidden Page. */
-router.get('/v1', function (req: Request, res: Response, next: NextFunction) {
-  throw new ResponseError.Forbidden('forbidden, wrong access endpoint')
+route.get('/v1', function (req: Request, res: Response) {
+  throw new ResponseError.Forbidden(
+    `Forbidden, wrong access endpoint: ${req.url}`
+  )
 })
 
-/* Declare Route */
-router.use('/v1', publicRoute)
+route.use('/v1', v1Route)
 
-export default router
+export default route

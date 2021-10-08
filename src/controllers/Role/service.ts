@@ -1,75 +1,103 @@
-import { AxiosInstance } from 'axios'
+import FetchApi from '@config/Fetcher'
+import { QueryParamsAttributes } from '@expresso/interfaces/QueryParams'
+import { AxiosResponse } from 'axios'
+import dotenv from 'dotenv'
 import queryString from 'query-string'
-import Fetcher from 'config/Fetcher'
 
-require('dotenv').config()
+dotenv.config()
 
-const API_SERVICE_USER = process.env.API_SERVICE_USER || 'http://localhost:8001'
+const API_SERVICE_USER = process.env.API_SERVICE_USER ?? 'http://localhost:8001'
 
-/*
-  Query Params like this :
-  example.com?page=1&pageSize=2&filtered=[{"id": "nama", "value": "admin"}]&sorted=[{"id": "nama", "desc": true}]
-*/
-
-interface queryAttributes {
-  page?: string
-  pageSize?: string
-  filtered?: string
-  sorted?: string
-}
-
-const FetchApi = new Fetcher(API_SERVICE_USER)
+const Fetcher = new FetchApi(API_SERVICE_USER)
 
 class RoleService {
-  private api: AxiosInstance
-
-  constructor() {
-    this.api = FetchApi.default
-  }
+  private static readonly axiosInstance = Fetcher.default
 
   /**
    *
-   * @param params params like query string
+   * @param params
    * @example
-   * // example.com?filtered=[]&sorted=[]&page=1&pageSize=10
+   * ```sh
+   * https://api.example.com?page=1&pageSize=10&filtered=[{"id": "name", "value": "anyValue"}]&sorted=[{"id": "createdAt", "desc": true}]
+   * ```
+   * @returns
    */
-  getAll(params: queryAttributes) {
+  public static async findAll(
+    params: QueryParamsAttributes
+  ): Promise<AxiosResponse<never>> {
     const query = { ...params }
     const queryParams = queryString.stringify(query)
-    return this.api.get(`/v1/role/?${queryParams}`)
+
+    const response = await this.axiosInstance.get(`/v1/role?${queryParams}`)
+    return response
   }
 
   /**
    *
    * @param id
+   * @returns
    */
-  getOne(id: string) {
-    return this.api.get(`/v1/role/${id}`)
+  public static async findById(id: string): Promise<AxiosResponse<never>> {
+    const response = await this.axiosInstance.get(`/v1/role/${id}`)
+    return response
   }
 
   /**
    *
    * @param formData
+   * @returns
    */
-  create(formData: any) {
-    return this.api.post(`/v1/role`, formData)
+  public static async create(formData: any): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(`/v1/role`, formData)
+    return response
   }
 
   /**
    *
    * @param id
    * @param formData
+   * @returns
    */
-  update(id: string, formData: any) {
-    return this.api.put(`/v1/role/${id}`, formData)
+  public static async update(
+    id: string,
+    formData: any
+  ): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.put(`/v1/role/${id}`, formData)
+    return response
   }
 
   /**
    *
    * @param id
+   * @returns
    */
-  destroy(id: string) {
-    return this.api.delete(`/v1/role/${id}`)
+  public static async restore(id: string): Promise<AxiosResponse<never>> {
+    const response = await this.axiosInstance.put(`/v1/role/restore/${id}`)
+    return response
+  }
+
+  /**
+   *
+   * @param id
+   * @returns
+   */
+  public static async softDelete(id: string): Promise<AxiosResponse<never>> {
+    const response = await this.axiosInstance.delete(
+      `/v1/role/soft-delete/${id}`
+    )
+    return response
+  }
+
+  /**
+   *
+   * @param id
+   * @returns
+   */
+  public static async forceDelete(id: string): Promise<AxiosResponse<never>> {
+    const response = await this.axiosInstance.delete(
+      `/v1/role/force-delete/${id}`
+    )
+    return response
   }
 }
 
