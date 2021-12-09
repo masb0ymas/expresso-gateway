@@ -24,7 +24,7 @@ class RoleService {
    */
   public static async findAll(
     params: QueryParamsAttributes
-  ): Promise<AxiosResponse<never>> {
+  ): Promise<AxiosResponse<any>> {
     const query = { ...params }
     const queryParams = queryString.stringify(query)
 
@@ -37,7 +37,7 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async findById(id: string): Promise<AxiosResponse<never>> {
+  public static async findById(id: string): Promise<AxiosResponse<any>> {
     const response = await this.axiosInstance.get(`/v1/role/${id}`)
     return response
   }
@@ -71,7 +71,7 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async restore(id: string): Promise<AxiosResponse<never>> {
+  public static async restore(id: string): Promise<AxiosResponse<any>> {
     const response = await this.axiosInstance.put(`/v1/role/restore/${id}`)
     return response
   }
@@ -81,7 +81,7 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async softDelete(id: string): Promise<AxiosResponse<never>> {
+  public static async softDelete(id: string): Promise<AxiosResponse<any>> {
     const response = await this.axiosInstance.delete(
       `/v1/role/soft-delete/${id}`
     )
@@ -93,9 +93,54 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async forceDelete(id: string): Promise<AxiosResponse<never>> {
+  public static async forceDelete(id: string): Promise<AxiosResponse<any>> {
     const response = await this.axiosInstance.delete(
       `/v1/role/force-delete/${id}`
+    )
+    return response
+  }
+
+  /**
+   *
+   * @param formData
+   * @returns
+   */
+  public static async multipleRestore(
+    formData: any
+  ): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(
+      `/v1/role/multiple/restore`,
+      formData
+    )
+    return response
+  }
+
+  /**
+   *
+   * @param formData
+   * @returns
+   */
+  public static async multipleSoftDelete(
+    formData: any
+  ): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(
+      `/v1/role/multiple/soft-delete`,
+      formData
+    )
+    return response
+  }
+
+  /**
+   *
+   * @param formData
+   * @returns
+   */
+  public static async multipleForceDelete(
+    formData: any
+  ): Promise<AxiosResponse<any>> {
+    const response = await this.axiosInstance.post(
+      `/v1/role/multiple/force-delete`,
+      formData
     )
     return response
   }

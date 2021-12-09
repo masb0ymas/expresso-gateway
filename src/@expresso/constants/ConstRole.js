@@ -6,4 +6,4 @@ const ConstRole = {
   ID_USER,
 }
 
-module.exports = ConstRole
+module.exports = { ConstRole }
