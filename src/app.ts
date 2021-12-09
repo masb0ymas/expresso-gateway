@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-throw-literal */
 import i18next from '@config/i18nextConfig'
 import winstonLogger, { winstonStream } from '@config/Logger'
 import allowedOrigins from '@expresso/constants/ConstAllowedOrigins'
+import { logServer } from '@expresso/helpers/Formatter'
 import withState from '@expresso/helpers/withState'
 import ResponseError from '@expresso/modules/Response/ResponseError'
 import { optionsSwaggerUI, swaggerSpec } from '@expresso/utils/DocsSwagger'
@@ -17,6 +19,7 @@ import Express, { Application, NextFunction, Request, Response } from 'express'
 import UserAgent from 'express-useragent'
 import helmet from 'helmet'
 import hpp from 'hpp'
+import http from 'http'
 import i18nextMiddleware from 'i18next-http-middleware'
 import Logger from 'morgan'
 import path from 'path'
@@ -26,7 +29,8 @@ import swaggerUI from 'swagger-ui-express'
 dotenv.config()
 
 const NODE_ENV = process.env.NODE_ENV ?? 'development'
-const APP_PORT = Number(process.env.PORT) ?? 8000
+const APP_PORT = Number(process.env.APP_PORT) ?? 8000
+const APP_NAME = process.env.APP_NAME ?? 'expresso'
 
 const optCors: Cors.CorsOptions = {
   origin: allowedOrigins,
@@ -121,11 +125,53 @@ class App {
       res.render('error')
     })
 
+    // setup port
+    this.application.set('port', this.port)
+    const server = http.createServer(this.application)
+
+    const onError = (error: { syscall: string; code: string }): void => {
+      if (error.syscall !== 'listen') {
+        throw error
+      }
+
+      const bind =
+        typeof this.port === 'string'
+          ? `Pipe ${this.port}`
+          : `Port ${this.port}`
+
+      // handle specific listen errors with friendly messages
+      switch (error.code) {
+        case 'EACCES':
+          console.error(`${bind} requires elevated privileges`)
+          process.exit(1)
+          break
+        case 'EADDRINUSE':
+          console.error(`${bind} is already in use`)
+          process.exit(1)
+          break
+        default:
+          throw error
+      }
+    }
+
+    const onListening = (): void => {
+      const addr = server.address()
+      const bind = typeof addr === 'string' ? `${addr}` : `${addr?.port}`
+
+      const host = chalk.cyan(`http://localhost:${bind}`)
+
+      const msgType = `${APP_NAME}`
+      const message = `Server listening on ${host} & ENV: ${chalk.blue(
+        NODE_ENV
+      )}`
+
+      console.log(logServer(msgType, message))
+    }
+
     // Run listener
-    this.application.listen(this.port, () => {
-      const host = chalk.cyan(`http://localhost:${this.port}`)
-      console.log(`Server listening on ${host} & Env: ${chalk.blue(NODE_ENV)}`)
-    })
+    server.listen(this.port)
+    server.on('error', onError)
+    server.on('listening', onListening)
   }
 }
 

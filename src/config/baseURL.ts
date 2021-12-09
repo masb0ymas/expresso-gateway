@@ -1,3 +1,6 @@
+import chalk from 'chalk'
+import dotenv from 'dotenv'
+
 const {
   NODE_ENV,
   PORT,
@@ -6,6 +9,8 @@ const {
   URL_CLIENT_PRODUCTION,
   URL_SERVER_PRODUCTION,
 } = process.env
+
+dotenv.config()
 
 const URL_CLIENT = {
   development: 'http://localhost:3000',
@@ -25,5 +30,7 @@ const ENV = NODE_ENV ?? 'development'
 const BASE_URL_CLIENT: string = URL_CLIENT[ENV]
 // @ts-expect-error
 const BASE_URL_SERVER: string = URL_SERVER[ENV]
+
+export const LOG_SERVER = chalk.green('[server]')
 
 export { BASE_URL_CLIENT, BASE_URL_SERVER }
