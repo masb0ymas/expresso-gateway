@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+import { JWT_ACCESS_TOKEN_EXPIRED, JWT_SECRET_ACCESS_TOKEN } from '@config/env'
 import { Request } from 'express'
 import { IncomingHttpHeaders } from 'http'
 import jwt, {
@@ -10,11 +10,6 @@ import jwt, {
 import _ from 'lodash'
 import ms from 'ms'
 import { logErrServer } from './Formatter'
-
-dotenv.config()
-
-const { JWT_SECRET_ACCESS_TOKEN }: any = process.env
-const JWT_ACCESS_TOKEN_EXPIRED = process.env.JWT_ACCESS_TOKEN_EXPIRED ?? '1d'
 
 interface PayloadAccessToken {
   accessToken: string
