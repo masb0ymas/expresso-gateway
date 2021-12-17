@@ -1,12 +1,8 @@
+import { API_SERVICE_USER } from '@config/env'
 import FetchApi from '@config/Fetcher'
 import { QueryParamsAttributes } from '@expresso/interfaces/QueryParams'
 import { AxiosResponse } from 'axios'
-import dotenv from 'dotenv'
 import queryString from 'query-string'
-
-dotenv.config()
-
-const API_SERVICE_USER = process.env.API_SERVICE_USER ?? 'http://localhost:8001'
 
 const Fetcher = new FetchApi(API_SERVICE_USER)
 
@@ -23,7 +19,7 @@ class UserService {
    * @returns
    */
   public static async findAll(
-    params: QueryParamsAttributes
+    params: Partial<QueryParamsAttributes>
   ): Promise<AxiosResponse<any>> {
     const query = { ...params }
     const queryParams = queryString.stringify(query)

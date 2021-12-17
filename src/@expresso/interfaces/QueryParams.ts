@@ -4,8 +4,8 @@
 */
 
 export interface QueryParamsAttributes {
-  page?: string
-  pageSize?: string
-  filtered?: string
-  sorted?: string
+  page: string
+  pageSize: string
+  filtered: string
+  sorted: string
 }

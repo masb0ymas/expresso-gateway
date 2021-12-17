@@ -1,10 +1,6 @@
-import dotenv from 'dotenv'
+import { API_SERVICE_USER } from '@config/env'
 import FetchApi from '@config/Fetcher'
 import { AxiosResponse } from 'axios'
-
-dotenv.config()
-
-const API_SERVICE_USER = process.env.API_SERVICE_USER ?? 'http://localhost:8001'
 
 const Fetcher = new FetchApi(API_SERVICE_USER)
 
