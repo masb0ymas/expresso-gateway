@@ -1,13 +1,12 @@
+import { getRoutes } from '@expresso/helpers/Routing'
 import Express from 'express'
+import path from 'path'
 
 const route = Express.Router()
 
+const baseRoutes = path.resolve(`${__dirname}/../controllers`)
+
 export default route
 
-require('@controllers/Auth/controller')
-
-// Account
-require('@controllers/Account/Notification/controller')
-require('@controllers/Account/Role/controller')
-require('@controllers/Account/Session/controller')
-require('@controllers/Account/User/controller')
+// Mapping Route
+getRoutes(baseRoutes)
