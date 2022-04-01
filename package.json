@@ -102,7 +102,7 @@
     "@types/node-cron": "^3.0.1",
     "@types/nodemailer": "^6.4.4",
     "@types/nodemailer-mailgun-transport": "^1.4.3",
-    "@types/redis": "^2.8.32",
+    "@types/redis": "^4.0.11",
     "@types/request-ip": "^0.0.37",
     "@types/swagger-jsdoc": "^6.0.1",
     "@types/swagger-ui-express": "^4.1.3",
