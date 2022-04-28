@@ -4,16 +4,15 @@ import RedisProvider from '@expresso/providers/Redis'
 import axios, { AxiosError, AxiosInstance } from 'axios'
 import chalk from 'chalk'
 import _ from 'lodash'
+import ms from 'ms'
 import { LOG_SERVER } from './baseURL'
 import { AXIOS_TIMEOUT } from './env'
 
 const Redis = new RedisProvider()
+const timeout = ms(AXIOS_TIMEOUT)
 
 function createAxios(baseUri: string): AxiosInstance {
-  const instanceAxios = axios.create({
-    baseURL: baseUri,
-    timeout: AXIOS_TIMEOUT,
-  })
+  const instanceAxios = axios.create({ baseURL: baseUri, timeout })
 
   // interceptor request
   instanceAxios.interceptors.request.use((config) => {
@@ -71,7 +70,8 @@ function createAxios(baseUri: string): AxiosInstance {
 
         console.log(`${LOG_SERVER} ${errAxios(error.message)}`)
         throw new ResponseError.BadRequest(
-          error.response?.data ?? error.message
+          // @ts-expect-error
+          error?.response?.data ?? error?.message
         )
       }
       return await Promise.reject(error)
