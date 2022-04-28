@@ -29,7 +29,7 @@ RUN export NODE_OPTIONS=\"--max_old_space_size=4096\"
 
 COPY . .
 
-RUN cp .env.docker-production .env
+RUN cp .env.docker-staging .env
 
 COPY --from=deps /app/node_modules ./node_modules
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
@@ -38,7 +38,7 @@ RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 FROM node:14-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV staging
 
 # RUN addgroup -g 1001 -S nodejs
 # RUN adduser -S expresso -u 1001
@@ -65,5 +65,5 @@ RUN node ./dist/@expresso/scripts/generate.js
 
 EXPOSE 8000
 
-# Run for production
-CMD ["yarn", "serve:production-docker"]
+# Run for staging
+CMD ["yarn", "serve:staging-docker"]
