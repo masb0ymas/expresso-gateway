@@ -77,7 +77,7 @@
     "swagger-ui-express": "^4.3.0",
     "uuid": "^8.3.2",
     "winston": "^3.7.2",
-    "yup": "0.31.0"
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
