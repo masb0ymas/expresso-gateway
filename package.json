@@ -4,7 +4,7 @@
   "description": "api-gateway with express",
   "main": "src/server.ts",
   "scripts": {
-    "key:generate": "npx ts-node ./src/@expresso/scripts/generate.ts",
+    "key:generate": "npx ts-node ./src/scripts/generate.ts",
     "dev": "npm-run-all build start:dev",
     "start": "nodemon --exec 'ts-node' ./src/server.ts",
     "start:dev": "nodemon --exec node ./dist/server.js",
@@ -13,7 +13,8 @@
     "test:types": "tsc --noEmit",
     "test:types-watch": "npm run test:types -- --watch",
     "prebuild": "npm run clean && yarn && npm run test:lint && npm run test:types",
-    "build": "npx tsc -p .",
+    "build": "npx swc src -d dist",
+    "build:ts": "npx tsc -p .",
     "deploy": "npm run build && pm2 reload ecosystem.config.js",
     "serve:staging": "NODE_ENV=staging node ./dist/server.js",
     "serve:production": "NODE_ENV=production node ./dist/server.js",
@@ -82,6 +83,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.224",
     "@types/compression": "^1.7.2",
     "@types/convert-excel-to-json": "^1.7.1",
     "@types/cookie-parser": "^1.4.3",
