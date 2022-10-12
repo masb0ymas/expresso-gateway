@@ -1,30 +1,26 @@
-import { API_SERVICE_USER } from '@config/env'
-import FetchApi from '@config/Fetcher'
-import { QueryParamsAttributes } from '@expresso/interfaces/QueryParams'
+import { RoleAttributes } from '@database/entities/Role'
+import {
+  MultipleIdsEntity,
+  QueryParamsAttributes,
+} from '@expresso/interfaces/QueryParams'
 import { AxiosResponse } from 'axios'
 import queryString from 'query-string'
-
-const Fetcher = new FetchApi(API_SERVICE_USER)
+import BaseAccount from '../BaseAccount'
 
 class RoleService {
-  private static readonly axiosInstance = Fetcher.default
+  private static readonly repo = new BaseAccount({ endpoint: '/v1/role' })
 
   /**
    *
-   * @param params
-   * @example
-   * ```sh
-   * https://api.example.com?page=1&pageSize=10&filtered=[{"id": "name", "value": "anyValue"}]&sorted=[{"id": "createdAt", "desc": true}]
-   * ```
+   * @param queryParams
    * @returns
    */
   public static async findAll(
-    params: Partial<QueryParamsAttributes>
-  ): Promise<AxiosResponse<any>> {
-    const query = { ...params }
-    const queryParams = queryString.stringify(query)
+    queryParams: Partial<QueryParamsAttributes>
+  ): Promise<AxiosResponse<any, any>> {
+    const newQuery = queryString.stringify({ ...queryParams })
 
-    const response = await this.axiosInstance.get(`/v1/role?${queryParams}`)
+    const response = await this.repo.findAll(newQuery)
     return response
   }
 
@@ -33,8 +29,8 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async findById(id: string): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.get(`/v1/role/${id}`)
+  public static async findById(id: string): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.findById(id)
     return response
   }
 
@@ -43,8 +39,10 @@ class RoleService {
    * @param formData
    * @returns
    */
-  public static async create(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(`/v1/role`, formData)
+  public static async create(
+    formData: RoleAttributes
+  ): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.create(formData)
     return response
   }
 
@@ -56,9 +54,9 @@ class RoleService {
    */
   public static async update(
     id: string,
-    formData: any
-  ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.put(`/v1/role/${id}`, formData)
+    formData: RoleAttributes
+  ): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.update(id, formData)
     return response
   }
 
@@ -67,8 +65,8 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async restore(id: string): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.put(`/v1/role/restore/${id}`)
+  public static async restore(id: string): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.restore(id)
     return response
   }
 
@@ -77,10 +75,8 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async softDelete(id: string): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.delete(
-      `/v1/role/soft-delete/${id}`
-    )
+  public static async softDelete(id: string): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.softDelete(id)
     return response
   }
 
@@ -89,10 +85,10 @@ class RoleService {
    * @param id
    * @returns
    */
-  public static async forceDelete(id: string): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.delete(
-      `/v1/role/force-delete/${id}`
-    )
+  public static async forceDelete(
+    id: string
+  ): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.forceDelete(id)
     return response
   }
 
@@ -102,12 +98,9 @@ class RoleService {
    * @returns
    */
   public static async multipleRestore(
-    formData: any
-  ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(
-      `/v1/role/multiple/restore`,
-      formData
-    )
+    formData: MultipleIdsEntity
+  ): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.multipleRestore(formData)
     return response
   }
 
@@ -117,12 +110,9 @@ class RoleService {
    * @returns
    */
   public static async multipleSoftDelete(
-    formData: any
-  ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(
-      `/v1/role/multiple/soft-delete`,
-      formData
-    )
+    formData: MultipleIdsEntity
+  ): Promise<AxiosResponse<any, any>> {
+    const response = await this.multipleSoftDelete(formData)
     return response
   }
 
@@ -132,12 +122,9 @@ class RoleService {
    * @returns
    */
   public static async multipleForceDelete(
-    formData: any
-  ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(
-      `/v1/role/multiple/force-delete`,
-      formData
-    )
+    formData: MultipleIdsEntity
+  ): Promise<AxiosResponse<any, any>> {
+    const response = await this.repo.multipleForceDelete(formData)
     return response
   }
 }

@@ -1,25 +1,18 @@
-import { API_SERVICE_USER } from '@config/env'
-import FetchApi from '@config/Fetcher'
 import { AxiosResponse } from 'axios'
-
-const Fetcher = new FetchApi(API_SERVICE_USER)
+import BaseAccount from '../BaseAccount'
 
 class SessionService {
-  private static readonly axiosInstance = Fetcher.default
+  private static readonly repo = new BaseAccount({ endpoint: '/v1/session' })
 
   /**
    *
-   * @param UserId
-   * @param token
+   * @param formData
    * @returns
    */
   public static async findByUserToken(
     formData: any
   ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(
-      `/v1/session/current`,
-      formData
-    )
+    const response = await this.repo.api.post('/current', formData)
     return response
   }
 
@@ -31,7 +24,7 @@ class SessionService {
   public static async createOrUpdate(
     formData: any
   ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(`/v1/session`, formData)
+    const response = await this.repo.create(formData)
     return response
   }
 
@@ -43,10 +36,7 @@ class SessionService {
   public static async deleteByUserToken(
     formData: any
   ): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(
-      `/v1/session/by-user-token`,
-      formData
-    )
+    const response = await this.repo.api.post(`/by-user-token`, formData)
     return response
   }
 }
