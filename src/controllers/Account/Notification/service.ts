@@ -5,7 +5,7 @@ import {
 } from '@expresso/interfaces/QueryParams'
 import { AxiosResponse } from 'axios'
 import queryString from 'query-string'
-import BaseAccount from '../BaseAccount'
+import BaseAccount from '../Base/BaseAccount'
 
 class NotificationService {
   private static readonly repo = new BaseAccount({

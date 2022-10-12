@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import BaseAccount from '../BaseAccount'
+import BaseAccount from '../Base/BaseAccount'
 
 class SessionService {
   private static readonly repo = new BaseAccount({ endpoint: '/v1/session' })

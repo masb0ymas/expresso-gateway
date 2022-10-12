@@ -1,4 +1,4 @@
-import BaseAccount from '@controllers/Account/BaseAccount'
+import BaseAccount from '@controllers/Account/Base/BaseAccount'
 import { AxiosResponse } from 'axios'
 
 class AuthService {
