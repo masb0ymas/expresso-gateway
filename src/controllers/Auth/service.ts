@@ -1,11 +1,8 @@
-import { API_SERVICE_USER } from '@config/env'
-import FetchApi from '@config/Fetcher'
+import BaseAccount from '@controllers/Account/BaseAccount'
 import { AxiosResponse } from 'axios'
 
-const Fetcher = new FetchApi(API_SERVICE_USER)
-
 class AuthService {
-  private static readonly axiosInstance = Fetcher.default
+  private static readonly repo = new BaseAccount({ endpoint: '/v1/auth' })
 
   /**
    *
@@ -13,7 +10,7 @@ class AuthService {
    * @returns
    */
   public static async signUp(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(`/v1/auth/sign-up`, formData)
+    const response = await this.repo.api.post(`/sign-up`, formData)
     return response
   }
 
@@ -23,7 +20,7 @@ class AuthService {
    * @returns
    */
   public static async signIn(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(`/v1/auth/sign-in`, formData)
+    const response = await this.repo.api.post(`/sign-in`, formData)
     return response
   }
 
@@ -33,7 +30,7 @@ class AuthService {
    * @returns
    */
   public static async logout(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.axiosInstance.post(`/v1/logout`, formData)
+    const response = await this.repo.api.post(`/v1/logout`, formData)
     return response
   }
 }

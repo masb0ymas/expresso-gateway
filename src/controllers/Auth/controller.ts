@@ -1,7 +1,7 @@
 import SessionService from '@controllers/Account/Session/service'
 import UserService from '@controllers/Account/User/service'
-import { SessionEntity } from '@database/models/Session'
-import { UserEntity, UserLoginAttributes } from '@database/models/User'
+import { SessionEntity } from '@database/entities/Session'
+import { UserEntity, UserLoginAttributes } from '@database/entities/User'
 import asyncHandler from '@expresso/helpers/asyncHandler'
 import { validateEmpty } from '@expresso/helpers/Formatter'
 import {
