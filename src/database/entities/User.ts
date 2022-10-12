@@ -1,7 +1,6 @@
-export interface UserEntity {
-  id: string
-  firstName: string
-  lastName: string
+import { BaseEntity } from './Base'
+
+export interface UserEntity extends BaseEntity {
   fullName: string
   phone?: string | null
   email: string
@@ -13,9 +12,6 @@ export interface UserEntity {
   RoleId: string
   newPassword?: string
   confirmNewPassword?: string
-  createdAt?: Date
-  updatedAt?: Date
-  deletedAt?: Date | null
 }
 
 export interface UserLoginAttributes {
@@ -28,3 +24,8 @@ export interface TokenAttributes {
 }
 
 export type LoginAttributes = Pick<UserEntity, 'email' | 'password'>
+
+export type UserAttributes = Omit<
+  UserEntity,
+  'id' | 'createdAt' | 'updatedAt' | 'deletedAt'
+>
