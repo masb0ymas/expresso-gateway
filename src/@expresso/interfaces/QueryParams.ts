@@ -9,3 +9,7 @@ export interface QueryParamsAttributes {
   filtered: string
   sorted: string
 }
+
+export interface MultipleIdsEntity {
+  ids: string | string[]
+}
