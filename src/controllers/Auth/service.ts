@@ -1,16 +1,16 @@
 import BaseAccount from '@controllers/Account/Base/BaseAccount'
 import { AxiosResponse } from 'axios'
 
-class AuthService {
-  private static readonly repo = new BaseAccount({ endpoint: '/v1/auth' })
+const repo = new BaseAccount({ endpoint: '/v1/auth' })
 
+class AuthService {
   /**
    *
    * @param formData
    * @returns
    */
   public static async signUp(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.repo.api.post(`/sign-up`, formData)
+    const response = await repo.api.post(`/sign-up`, formData)
     return response
   }
 
@@ -20,7 +20,7 @@ class AuthService {
    * @returns
    */
   public static async signIn(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.repo.api.post(`/sign-in`, formData)
+    const response = await repo.api.post(`/sign-in`, formData)
     return response
   }
 
@@ -30,7 +30,7 @@ class AuthService {
    * @returns
    */
   public static async logout(formData: any): Promise<AxiosResponse<any>> {
-    const response = await this.repo.api.post(`/v1/logout`, formData)
+    const response = await repo.api.post(`/logout`, formData)
     return response
   }
 }

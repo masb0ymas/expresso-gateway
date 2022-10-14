@@ -1,9 +1,9 @@
 import { AxiosResponse } from 'axios'
 import BaseAccount from '../Base/BaseAccount'
 
-class SessionService {
-  private static readonly repo = new BaseAccount({ endpoint: '/v1/session' })
+const repo = new BaseAccount({ endpoint: '/v1/session' })
 
+class SessionService {
   /**
    *
    * @param formData
@@ -12,7 +12,7 @@ class SessionService {
   public static async findByUserToken(
     formData: any
   ): Promise<AxiosResponse<any>> {
-    const response = await this.repo.api.post('/current', formData)
+    const response = await repo.api.post('/current', formData)
     return response
   }
 
@@ -24,7 +24,7 @@ class SessionService {
   public static async createOrUpdate(
     formData: any
   ): Promise<AxiosResponse<any>> {
-    const response = await this.repo.create(formData)
+    const response = await repo.create(formData)
     return response
   }
 
@@ -36,7 +36,7 @@ class SessionService {
   public static async deleteByUserToken(
     formData: any
   ): Promise<AxiosResponse<any>> {
-    const response = await this.repo.api.post(`/by-user-token`, formData)
+    const response = await repo.api.post(`/by-user-token`, formData)
     return response
   }
 }

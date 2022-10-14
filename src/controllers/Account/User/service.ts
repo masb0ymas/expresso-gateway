@@ -7,9 +7,9 @@ import { AxiosResponse } from 'axios'
 import queryString from 'query-string'
 import BaseAccount from '../Base/BaseAccount'
 
-class UserService {
-  private static readonly repo = new BaseAccount({ endpoint: '/v1/user' })
+const repo = new BaseAccount({ endpoint: '/v1/user' })
 
+class UserService {
   /**
    *
    * @param queryParams
@@ -19,7 +19,7 @@ class UserService {
     queryParams: Partial<QueryParamsAttributes>
   ): Promise<AxiosResponse<any, any>> {
     const newQuery = queryString.stringify({ ...queryParams })
-    const response = await this.repo.findAll(newQuery)
+    const response = await repo.findAll(newQuery)
     return response
   }
 
@@ -29,7 +29,7 @@ class UserService {
    * @returns
    */
   public static async findById(id: string): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.findById(id)
+    const response = await repo.findById(id)
     return response
   }
 
@@ -41,7 +41,7 @@ class UserService {
   public static async create(
     formData: UserAttributes
   ): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.create(formData)
+    const response = await repo.create(formData)
     return response
   }
 
@@ -55,7 +55,7 @@ class UserService {
     id: string,
     formData: UserAttributes
   ): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.update(id, formData)
+    const response = await repo.update(id, formData)
     return response
   }
 
@@ -65,7 +65,7 @@ class UserService {
    * @returns
    */
   public static async restore(id: string): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.restore(id)
+    const response = await repo.restore(id)
     return response
   }
 
@@ -75,7 +75,7 @@ class UserService {
    * @returns
    */
   public static async softDelete(id: string): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.softDelete(id)
+    const response = await repo.softDelete(id)
     return response
   }
 
@@ -87,7 +87,7 @@ class UserService {
   public static async forceDelete(
     id: string
   ): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.forceDelete(id)
+    const response = await repo.forceDelete(id)
     return response
   }
 
@@ -99,7 +99,7 @@ class UserService {
   public static async multipleRestore(
     formData: MultipleIdsEntity
   ): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.multipleRestore(formData)
+    const response = await repo.multipleRestore(formData)
     return response
   }
 
@@ -111,7 +111,7 @@ class UserService {
   public static async multipleSoftDelete(
     formData: MultipleIdsEntity
   ): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.multipleSoftDelete(formData)
+    const response = await repo.multipleSoftDelete(formData)
     return response
   }
 
@@ -123,7 +123,7 @@ class UserService {
   public static async multipleForceDelete(
     formData: MultipleIdsEntity
   ): Promise<AxiosResponse<any, any>> {
-    const response = await this.repo.multipleForceDelete(formData)
+    const response = await repo.multipleForceDelete(formData)
     return response
   }
 }
