@@ -14,10 +14,15 @@ void i18next.use(i18nextBackend).init(
     },
   },
   (err, _t) => {
-    if (err) return console.error(err)
+    if (err) {
+      console.error(err)
+      return
+    }
 
     console.log(logServer('i18next', 'is ready...'))
   }
 )
 
-export default i18next
+const i18nConfig = i18next
+
+export { i18nConfig }
