@@ -1,6 +1,7 @@
 import { BaseEntity } from './Base'
 
 export interface UserEntity extends BaseEntity {
+  deletedAt?: Date | string | null
   fullName: string
   phone?: string | null
   email: string

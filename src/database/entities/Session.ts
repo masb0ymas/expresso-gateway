@@ -1,5 +1,7 @@
-export interface SessionEntity {
-  id?: string
+import { BaseEntity } from './Base'
+
+export interface SessionEntity extends BaseEntity {
+  deletedAt?: Date | string | null
   UserId: string
   token: string
   ipAddress?: string | null
@@ -7,6 +9,4 @@ export interface SessionEntity {
   platform?: string | null
   latitude?: string | null
   longitude?: string | null
-  createdAt?: Date
-  updatedAt?: Date
 }
