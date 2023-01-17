@@ -79,11 +79,12 @@ const useMulter = (props: MulterSetupProps): multer.Multer => {
       const allowedExt = props.allowedExt ?? defaultAllowedExt
 
       if (!allowedMimetype.includes(file.mimetype.toLowerCase())) {
-        return cb(
+        cb(
           new ResponseError.BadRequest(
             `Only ${allowedExt.join(', ')} ext are allowed`
           )
         )
+        return
       }
 
       cb(null, true)
