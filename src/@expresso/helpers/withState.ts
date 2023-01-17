@@ -5,7 +5,7 @@ import getterObject from './getterObject'
 import Multers from './Multer'
 
 class withState {
-  private req: Request
+  private readonly req: Request
 
   constructor(req: Request) {
     this.req = req
@@ -87,7 +87,11 @@ class withState {
   }
 
   getMultiArrayFile(name: string): any {
-    const data = _.get(this.req.files, name, []) as Express.Multer.File
+    const data = _.get(
+      this.req.files,
+      name,
+      []
+    ) as unknown as Express.Multer.File
 
     if (data) {
       return data
