@@ -10,6 +10,8 @@ import BaseAccount from '../Base/BaseAccount'
 const repo = new BaseAccount({ endpoint: '/v1/notification' })
 
 class NotificationService {
+  public static api = repo.api
+
   /**
    *
    * @param queryParams

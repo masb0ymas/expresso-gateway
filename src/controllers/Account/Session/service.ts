@@ -4,6 +4,8 @@ import BaseAccount from '../Base/BaseAccount'
 const repo = new BaseAccount({ endpoint: '/v1/session' })
 
 class SessionService {
+  public static api = repo.api
+
   /**
    *
    * @param formData
