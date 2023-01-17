@@ -1,5 +1,5 @@
-import { BASE_URL_SERVER } from '@config/baseURL'
 import { APP_NAME } from '@config/env'
+import { AccountRegistrationEntity } from '@expresso/interfaces/SendMail'
 import ResponseError from '@expresso/modules/Response/ResponseError'
 import EmailProvider from '@expresso/providers/Email'
 import fs from 'fs'
@@ -7,43 +7,63 @@ import Handlebars from 'handlebars'
 import path from 'path'
 import { readHTMLFile } from './File'
 
-interface AccountRegistrationProps {
-  email: string
-  fullName: string
-  token: string
-}
-
-const SMTPEmail = new EmailProvider()
+const MailProvider = new EmailProvider()
 
 class SendMail {
   /**
    *
-   * @param formData
+   * @param html
+   * @returns
    */
-  public static AccountRegistration(formData: AccountRegistrationProps): void {
+  private static getPath(html: string): string {
     const templatePath = path.resolve(
-      `${__dirname}/../../../public/templates/emails/register.html`
+      `${__dirname}/../../../public/templates/emails/${html}`
     )
     console.log({ templatePath })
 
-    const subject = 'Email Verification'
-    const tokenUrl = `${BASE_URL_SERVER}/v1/email/verify?token=${formData.token}`
-    const templateData = { APP_NAME, tokenUrl, ...formData }
+    return templatePath
+  }
 
-    if (!fs.existsSync(templatePath)) {
-      throw new ResponseError.BadRequest(
-        'invalid template path for email registration'
-      )
+  /**
+   *
+   * @param _path
+   * @param mailTo
+   * @param subject
+   * @param data
+   */
+  private static sendTemplateMail(
+    _path: string,
+    mailTo: string,
+    subject: string,
+    data: string | any
+  ): void {
+    if (!fs.existsSync(_path)) {
+      throw new ResponseError.BadRequest('invalid template path ')
     }
 
-    readHTMLFile(templatePath, (err: Error, html: any) => {
+    readHTMLFile(_path, (err: Error, html: any) => {
       if (err) console.log(err)
 
       const template = Handlebars.compile(html)
-      const htmlToSend = template(templateData)
+      const htmlToSend = template(data)
 
-      SMTPEmail.send(formData.email, subject, htmlToSend)
+      MailProvider.send(mailTo, subject, htmlToSend)
     })
+  }
+
+  /**
+   *
+   * @param values
+   */
+  public static AccountRegistration(values: AccountRegistrationEntity): void {
+    const _path = this.getPath('register.html')
+
+    const { fullName, email } = values
+    const subject = `${fullName}, Terima kasih telah mendaftar di App ${APP_NAME}`
+
+    const data = { ...values }
+
+    this.sendTemplateMail(_path, email, subject, data)
   }
 }
 
