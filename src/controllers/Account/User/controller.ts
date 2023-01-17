@@ -1,4 +1,4 @@
-import { ConstRole } from '@expresso/constants/ConstRole'
+import ConstRole from '@expresso/constants/ConstRole'
 import asyncHandler from '@expresso/helpers/asyncHandler'
 import HttpResponse from '@expresso/modules/Response/HttpResponse'
 import Authorization from '@middlewares/Authorization'
