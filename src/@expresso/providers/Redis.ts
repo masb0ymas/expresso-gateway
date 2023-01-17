@@ -1,12 +1,9 @@
 import { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT } from '@config/env'
-import dotenv from 'dotenv'
 import Redis, { Redis as RedisClient } from 'ioredis'
 import ms from 'ms'
 
-dotenv.config()
-
 const defaultTimeout = ms('1d') / 1000
-const defaultExpiry = 'PX' // PX = miliseconds || EX = seconds. full documentation https://redis.io/commands/set
+// const defaultExpiry = 'PX' // PX = miliseconds || EX = seconds. full documentation https://redis.io/commands/set
 
 interface RedisOptionsProps {
   expiryMode?: string | any[]
@@ -35,10 +32,10 @@ class RedisProvider {
     data: any,
     options?: RedisOptionsProps
   ): Promise<void> {
-    const expiryMode = options?.expiryMode ?? defaultExpiry
+    // const expiryMode = options?.expiryMode ?? defaultExpiry
     const timeoutRedis = options?.timeout ?? defaultTimeout
 
-    await this.client.set(key, JSON.stringify(data), expiryMode, timeoutRedis)
+    await this.client.setex(key, timeoutRedis, JSON.stringify(data))
   }
 
   /**
