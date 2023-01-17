@@ -10,7 +10,7 @@ class AuthService {
    * @returns
    */
   public static async signUp(formData: any): Promise<AxiosResponse<any>> {
-    const response = await repo.api.post(`/sign-up`, formData)
+    const response = await repo.api.post(`/v1/auth/sign-up`, formData)
     return response
   }
 
@@ -20,7 +20,7 @@ class AuthService {
    * @returns
    */
   public static async signIn(formData: any): Promise<AxiosResponse<any>> {
-    const response = await repo.api.post(`/sign-in`, formData)
+    const response = await repo.api.post(`/v1/auth/sign-in`, formData)
     return response
   }
 
@@ -30,7 +30,7 @@ class AuthService {
    * @returns
    */
   public static async logout(formData: any): Promise<AxiosResponse<any>> {
-    const response = await repo.api.post(`/logout`, formData)
+    const response = await repo.api.post(`/v1/logout`, formData)
     return response
   }
 }
