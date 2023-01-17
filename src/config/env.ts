@@ -35,8 +35,8 @@ export const API_SERVICE_MASTER = process.env.API_SERVICE_MASTER ?? 'http://loca
 export const API_SERVICE_UPLOAD = process.env.API_SERVICE_UPLOAD ?? 'http://localhost:8003'
 
 // url sandbox
-export const URL_CLIENT_SANDBOX = process.env.URL_CLIENT_SANDBOX ?? 'https://sandbox.example.com'
-export const URL_SERVER_SANDBOX = process.env.URL_SERVER_SANDBOX ?? 'https://api-sandbox.example.com'
+export const URL_CLIENT_STAGING = process.env.URL_CLIENT_STAGING ?? 'https://sandbox.example.com'
+export const URL_SERVER_STAGING = process.env.URL_SERVER_STAGING ?? 'https://api-sandbox.example.com'
 
 // url production
 export const URL_CLIENT_PRODUCTION = process.env.URL_CLIENT_PRODUCTION ?? 'https://example.com'
