@@ -22,7 +22,7 @@ import indexRoutes from '../routes'
 import { corsOptions } from './cors'
 import { env } from './env'
 import { i18n } from './i18n'
-import { winstonLogger, winstonStream } from './logger'
+import { winstonLogger, winstonStream } from './loggers'
 import { mailService } from './mail'
 
 /**
