@@ -8,21 +8,13 @@
 
     /* Modules */
     "module": "commonjs",
-    "rootDir": "./src",
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@expresso/*": ["@expresso/*"],
-      "@config/*": ["config/*"],
-      "@controllers/*": ["controllers/*"],
-      "@database/*": ["database/*"],
-      "@jobs/*": ["jobs/*"],
-      "@middlewares/*": ["middlewares/*"],
-      "@routes/*": ["routes/*"],
-      "@scripts/*": ["scripts/*"],
-      "@views/*": ["views/*"]
+      "~/*": ["./src/*"]
     },
-    "typeRoots": ["./src/types"],
+    "typeRoots": ["./src/core/types"],
+    // "types": ["jest"],
 
     /* JavaScript Support */
     "allowJs": true,
