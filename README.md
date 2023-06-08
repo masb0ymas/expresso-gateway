@@ -1,10 +1,10 @@
-# expresso with TypeORM
+# minimal expresso ( gateway )
 
 [![documentation](https://img.shields.io/badge/Documentation-yes-brightgreen.svg)](https://github.com/masb0ymas/expresso-typeorm#readme)
 [![maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/masb0ymas/expresso-typeorm/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/masb0ymas/expresso-typeorm/blob/master/LICENSE.md)
 
-[![version](https://img.shields.io/badge/Version-4.3.0-blue.svg?cacheSeconds=2592000)](https://github.com/masb0ymas/expresso-typeorm/releases/tag/v4.3.0)
+[![version](https://img.shields.io/badge/Version-3.0.0-blue.svg?cacheSeconds=2592000)](https://github.com/masb0ymas/expresso-typeorm/releases/tag/v3.0.0)
 [![Express](https://img.shields.io/badge/Express-4.18.2-informational?logo=express&color=22272E)](https://expressjs.com/)
 ![Node](https://badges.aleen42.com/src/node.svg)
 ![Eslint](https://badges.aleen42.com/src/eslint.svg)
@@ -14,7 +14,6 @@
 ## Feature
 
 - [TypeScript](https://github.com/microsoft/TypeScript) `5.1.x`
-- [TypeORM](https://github.com/typeorm/typeorm) `0.3.x`
 - [Nodemailer](https://github.com/nodemailer/nodemailer) `6.x`
 - [Handlebars](https://github.com/wycats/handlebars.js) for templating HTML
 - [Yup](https://github.com/jquense/yup) for validation schema `1.x`
@@ -31,12 +30,11 @@
 1. Clone this repository
 2. Duplicate `.env.example` to `.env`
 3. Setup database settings inside `.env` file
-4. Create your database ( manual ) or run `yarn db:create && yarn db:reset`
-5. Run `yarn dev` command
-6. Run watch command `yarn dev:watch`
-7. Release your app for *Production* or *Staging* with `yarn release`
-8. Build your code with Docker `docker build -t yourname/express:v1.0.0 .`
-9. Run with docker image `docker run -p 7000:8000 -d yourname/express:v1.0.0`
+4. Run `yarn dev` command
+5. Run watch command `yarn dev:watch`
+6. Release your app for *Production* or *Staging* with `yarn release`
+7. Build your code with Docker `docker build -t yourname/express:v1.0.0 .`
+8. Run with docker image `docker run -p 7000:8000 -d yourname/express:v1.0.0`
 
 ## Author
 
@@ -45,6 +43,7 @@
 [![Github](https://badges.aleen42.com/src/github.svg)](https://github.com/masb0ymas)
 [![Twitter](https://badges.aleen42.com/src/twitter.svg)](https://twitter.com/masb0ymas)
 [![Linkedin](https://img.shields.io/badge/Linkedin-Informational?logo=linkedin&color=0A66C2&logoColor=white)](https://www.linkedin.com/in/masb0ymas)
+[![Paypal](https://badges.aleen42.com/src/paypal.svg)](https://www.paypal.com/paypalme/masb0ymas)
 
 ## Support Me
 
