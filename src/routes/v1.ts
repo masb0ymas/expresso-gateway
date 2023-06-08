@@ -1,10 +1,10 @@
-import { getRoutes } from '@expresso/helpers/Routing'
-import Express from 'express'
+import express from 'express'
 import path from 'path'
+import { getRoutes } from '~/core/modules/getRoutes'
 
-const route = Express.Router()
+const route = express.Router()
 
-const baseRoutes = path.resolve(`${__dirname}/../controllers`)
+const baseRoutes = path.resolve(`${__dirname}/../app/controller`)
 
 export default route
 

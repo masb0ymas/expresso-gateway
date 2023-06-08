@@ -1,67 +1,140 @@
-/* eslint-disable prettier/prettier */
-import dotenv from 'dotenv'
+import 'dotenv/config'
 
-dotenv.config()
+/**
+ *
+ * @param value
+ * @param fallback
+ * @returns
+ */
+function getEnv(value: any, fallback?: any): any {
+  const result = process.env[value]
 
-// node env
-export const NODE_ENV = process.env.NODE_ENV ?? 'development'
+  // check env value
+  if ([undefined, null, ''].includes(result)) {
+    // check fallback
+    if (fallback) {
+      return fallback
+    }
 
-// app
-export const APP_KEY = process.env.APP_KEY
-export const APP_NAME = process.env.APP_NAME ?? 'expresso-gateway'
-export const APP_PORT = Number(process.env.APP_PORT) ?? 8000
+    return undefined
+  }
 
-// axios
-export const AXIOS_TIMEOUT = process.env.AXIOS_TIMEOUT ?? '5m'
+  return result
+}
 
-// rate limit request
-export const RATE_LIMIT = Number(process.env.RATE_LIMIT) ?? 100
+/**
+ * App Env
+ */
+const appEnv = {
+  // Application
+  NODE_ENV: getEnv('NODE_ENV', 'development'),
 
-// otp
-export const SECRET_OTP: any = process.env.SECRET_OTP
-export const EXPIRED_OTP = process.env.EXPIRED_OTP ?? '5m'
+  APP_KEY: getEnv('APP_KEY'),
+  APP_NAME: getEnv('APP_NAME', 'expresso'),
+  APP_LANG: getEnv('APP_LANG', 'id'),
+  APP_PORT: Number(getEnv('APP_PORT', 8000)),
 
-// jwt access
-export const JWT_SECRET_ACCESS_TOKEN: any = process.env.JWT_SECRET_ACCESS_TOKEN
-export const JWT_ACCESS_TOKEN_EXPIRED = process.env.JWT_ACCESS_TOKEN_EXPIRED ?? '1d'
+  // Config
+  AXIOS_TIMEOUT: getEnv('AXIOS_TIMEOUT', '5m'),
+  RATE_LIMIT: Number(getEnv('RATE_LIMIT', 100)),
+  RATE_DELAY: getEnv('RATE_DELAY', '5m'),
+}
 
-// jwt refresh
-export const JWT_SECRET_REFRESH_TOKEN: any = process.env.JWT_SECRET_REFRESH_TOKEN
-export const JWT_REFRESH_TOKEN_EXPIRED = process.env.JWT_REFRESH_TOKEN_EXPIRED ?? '7d'
+/**
+ * Secret Env
+ */
+const secretEnv = {
+  // OTP
+  SECRET_OTP: getEnv('SECRET_OTP'),
+  EXPIRED_OTP: getEnv('EXPIRED_OTP', '5m'),
 
-// api microservice
-export const API_SERVICE_USER = process.env.API_SERVICE_USER ?? 'http://localhost:8001'
-export const API_SERVICE_MASTER = process.env.API_SERVICE_MASTER ?? 'http://localhost:8002'
-export const API_SERVICE_UPLOAD = process.env.API_SERVICE_UPLOAD ?? 'http://localhost:8003'
+  // JWT
+  JWT_SECRET_ACCESS_TOKEN: getEnv('JWT_SECRET_ACCESS_TOKEN'),
+  JWT_ACCESS_TOKEN_EXPIRED: getEnv('JWT_ACCESS_TOKEN_EXPIRED', '1d'),
 
-// url sandbox
-export const URL_CLIENT_STAGING = process.env.URL_CLIENT_STAGING ?? 'https://sandbox.example.com'
-export const URL_SERVER_STAGING = process.env.URL_SERVER_STAGING ?? 'https://api-sandbox.example.com'
+  JWT_SECRET_REFRESH_TOKEN: getEnv('JWT_SECRET_REFRESH_TOKEN'),
+  JWT_REFRESH_TOKEN_EXPIRED: getEnv('JWT_REFRESH_TOKEN_EXPIRED', '30d'),
+}
 
-// url production
-export const URL_CLIENT_PRODUCTION = process.env.URL_CLIENT_PRODUCTION ?? 'https://example.com'
-export const URL_SERVER_PRODUCTION = process.env.URL_SERVER_PRODUCTION ?? 'https://api.example.com'
+/**
+ * Base URL Env
+ */
+const baseURLEnv = {
+  // Base URL
+  URL_CLIENT_STAGING: getEnv(
+    'URL_CLIENT_STAGING',
+    'https://sandbox.example.com'
+  ),
+  URL_SERVER_STAGING: getEnv(
+    'URL_SERVER_STAGING',
+    'https://api-sandbox.example.com'
+  ),
 
-// smtp
-export const MAIL_DRIVER = process.env.MAIL_DRIVER ?? 'smtp'
-export const MAIL_HOST = process.env.MAIL_HOST ?? 'smtp.mailtrap.io'
-export const MAIL_PORT = Number(process.env.MAIL_PORT) ?? 2525
-export const MAIL_AUTH_TYPE = process.env.MAIL_AUTH_TYPE ?? undefined
-export const MAIL_USERNAME = process.env.MAIL_USERNAME ?? undefined
-export const MAIL_PASSWORD = process.env.MAIL_PASSWORD ?? undefined
-export const MAIL_ENCRYPTION = process.env.MAIL_ENCRYPTION ?? undefined
+  URL_CLIENT_PRODUCTION: getEnv('URL_CLIENT_PRODUCTION', 'https://example.com'),
+  URL_SERVER_PRODUCTION: getEnv(
+    'URL_SERVER_PRODUCTION',
+    'https://api.example.com'
+  ),
+}
 
-// smtp mailgun
-export const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY ?? undefined
-export const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN ?? undefined
+/**
+ * SMTP Env
+ */
+const mailEnv = {
+  // default smtp
+  MAIL_DRIVER: getEnv('MAIL_DRIVER', 'smtp'),
+  MAIL_HOST: getEnv('MAIL_HOST', 'smtp.mailtrap.io'),
+  MAIL_PORT: Number(getEnv('MAIL_PORT', 2525)),
+  MAIL_AUTH_TYPE: getEnv('MAIL_AUTH_TYPE'),
+  MAIL_USERNAME: getEnv('MAIL_USERNAME'),
+  MAIL_PASSWORD: getEnv('MAIL_PASSWORD'),
+  MAIL_ENCRYPTION: getEnv('MAIL_ENCRYPTION'),
 
-// smtp google OAuth
-export const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID ?? undefined
-export const OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET ?? undefined
-export const OAUTH_REDIRECT_URL = process.env.OAUTH_REDIRECT_URL ?? undefined
-export const OAUTH_REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN ?? undefined
+  // mailgun smtp
+  MAILGUN_API_KEY: getEnv('MAILGUN_API_KEY'),
+  MAILGUN_DOMAIN: getEnv('MAILGUN_DOMAIN'),
 
-// redis
-export const REDIS_HOST = process.env.REDIS_HOST ?? '127.0.0.1'
-export const REDIS_PORT = Number(process.env.REDIS_PORT) ?? 6379
-export const REDIS_PASSWORD = process.env.REDIS_PASSWORD ?? undefined
+  // google OAuth smtp
+  OAUTH_CLIENT_ID: getEnv('OAUTH_CLIENT_ID'),
+  OAUTH_CLIENT_SECRET: getEnv('OAUTH_CLIENT_SECRET'),
+  OAUTH_REDIRECT_URL: getEnv('OAUTH_REDIRECT_URL'),
+  OAUTH_REFRESH_TOKEN: getEnv('OAUTH_REFRESH_TOKEN'),
+}
+
+/**
+ * Redis Env
+ */
+const redisEnv = {
+  REDIS_HOST: getEnv('REDIS_HOST', '127.0.0.1'),
+  REDIS_PORT: Number(getEnv('REDIS_PORT', 6379)),
+  REDIS_PASSWORD: getEnv('REDIS_PASSWORD'),
+}
+
+/**
+ * Third Party Env
+ */
+const thirdPartyEnv = {
+  // open street map
+  OPEN_STREET_MAP_URL: getEnv(
+    'OPEN_STREET_MAP_URL',
+    'https://nominatim.openstreetmap.org'
+  ),
+
+  // Telegram
+  TELEGRAM_API_URL: getEnv('TELEGRAM_API_URL', 'https://api.telegram.org'),
+  TELEGRAM_BOT_TOKEN: getEnv('TELEGRAM_BOT_TOKEN'),
+  TELEGRAM_CHAT_ID: getEnv('TELEGRAM_CHAT_ID'),
+
+  // Slack
+  SLACK_API_URL: getEnv('SLACK_API_URL', 'https://slack.com/api'),
+  SLACK_TOKEN: getEnv('SLACK_TOKEN'),
+}
+
+export const env = {
+  ...appEnv,
+  ...secretEnv,
+  ...baseURLEnv,
+  ...mailEnv,
+  ...redisEnv,
+  ...thirdPartyEnv,
+}
