@@ -1,5 +1,6 @@
-import { printLog } from 'expresso-core'
+import { green } from 'colorette'
 import cron from 'node-cron'
+import { logger } from '~/config/pino'
 
 export class ExampleJob {
   /**
@@ -10,11 +11,8 @@ export class ExampleJob {
 
     // Run this job every 2:00 am
     const task = cron.schedule(cronExpression, async () => {
-      const msgType = `Cron Job:`
-      const message = 'Running task every 15 minutes'
-
-      const logMessage = printLog(msgType, message)
-      console.log(logMessage)
+      const msgType = green(`cron job`)
+      logger.info(`${msgType} - running task every 15 minutes`)
     })
 
     return task
