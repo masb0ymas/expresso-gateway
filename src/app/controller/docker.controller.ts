@@ -27,6 +27,8 @@ route.post(
     const { chatId } = req.getQuery()
     const formData = req.getBody()
 
+    console.log({ formData })
+
     const buildVersion = _.get(formData, 'push_data.tag', '')
     const repoName = _.get(formData, 'repository.name', '')
 
@@ -47,6 +49,8 @@ route.post(
     const { channel } = req.getQuery()
     const formData = req.getBody()
 
+    console.log({ formData })
+
     const buildVersion = _.get(formData, 'push_data.tag', '')
     const repoName = _.get(formData, 'repository.name', '')
 
@@ -55,5 +59,67 @@ route.post(
 
     const httpResponse = HttpResponse.get(response.data)
     res.status(response.status).json(httpResponse)
+  })
+)
+
+/**
+ * Webhook from Docker Hub
+ */
+route.post(
+  '/docker-hub',
+  asyncHandler(async function postDocker(req: Request, res: Response) {
+    const { slack_channel, telegram_chat_id } = req.getQuery()
+    const formData = req.getBody()
+
+    console.log({ formData })
+
+    const buildVersion = _.get(formData, 'push_data.tag', '')
+    const repoName = _.get(formData, 'repository.repo_name', '')
+
+    const message = `Docker Hub - ${repoName}:${buildVersion} is ready...`
+
+    // send to slack
+    if (!_.isEmpty(slack_channel)) {
+      await SlackService.postMessage(slack_channel, message)
+    }
+
+    // send to telegram
+    if (!_.isEmpty(telegram_chat_id)) {
+      await TelegramService.sendMessage(telegram_chat_id, message)
+    }
+
+    const httpResponse = HttpResponse.get({})
+    res.status(200).json(httpResponse)
+  })
+)
+
+/**
+ * Webhook from Workflow Github Action
+ */
+route.post(
+  '/workflow-github',
+  asyncHandler(async function postGithub(req: Request, res: Response) {
+    const { slack_channel, telegram_chat_id, registry } = req.getQuery()
+    const formData = req.getBody()
+
+    console.log({ formData })
+
+    const buildVersion = _.get(formData, 'push_data.tag', '')
+    const repoName = _.get(formData, 'repository.name', '')
+
+    const message = `${registry} ${repoName}:${buildVersion} is ready...`
+
+    // send to slack
+    if (!_.isEmpty(slack_channel)) {
+      await SlackService.postMessage(slack_channel, message)
+    }
+
+    // send to telegram
+    if (!_.isEmpty(telegram_chat_id)) {
+      await TelegramService.sendMessage(telegram_chat_id, message)
+    }
+
+    const httpResponse = HttpResponse.get({})
+    res.status(200).json(httpResponse)
   })
 )
