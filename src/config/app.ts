@@ -6,13 +6,12 @@ import userAgent from 'express-useragent'
 import helmet from 'helmet'
 import hpp from 'hpp'
 import i18nextMiddleware from 'i18next-http-middleware'
-import logger from 'morgan'
 import path from 'path'
 import requestIp from 'request-ip'
 import swaggerUI from 'swagger-ui-express'
 import { Jobs } from '~/app/job'
 import expressErrorResponse from '~/app/middleware/expressErrorResponse'
-import expressErrorYup from '~/app/middleware/expressErrorYups'
+import expressErrorZod from '~/app/middleware/expressErrorZod'
 import { expressRateLimit } from '~/app/middleware/expressRateLimit'
 import { expressUserAgent } from '~/app/middleware/expressUserAgent'
 import { expressWithState } from '~/app/middleware/expressWithState'
@@ -22,8 +21,8 @@ import indexRoutes from '../routes'
 import { corsOptions } from './cors'
 import { env } from './env'
 import { i18n } from './i18n'
-import { winstonLogger, winstonStream } from './logger'
 import { mailService } from './mail'
+import { httpLogger } from './pino'
 
 /**
  * Initialize Bootsrap Application
@@ -53,13 +52,12 @@ export class App {
   private _plugins(): void {
     this._app.use(helmet())
     this._app.use(cors(corsOptions))
-
-    this._app.use(logger('combined', { stream: winstonStream }))
+    this._app.use(httpLogger())
+    this._app.use(compression())
+    this._app.use(cookieParser())
     this._app.use(express.json({ limit: '200mb', type: 'application/json' }))
     this._app.use(express.urlencoded({ extended: true }))
     this._app.use(express.static(path.resolve(`${__dirname}/../../public`)))
-    this._app.use(cookieParser())
-    this._app.use(compression())
     this._app.use(hpp())
     this._app.use(requestIp.mw())
     this._app.use(userAgent.express())
@@ -121,42 +119,14 @@ export class App {
   }
 
   /**
-   * Return this Application Bootstrap
-   * @returns
-   */
-  public app(): Application {
-    return this._app
-  }
-
-  /**
    * Create Bootstrap App
    */
   public create(): Application {
-    this._app.use(expressErrorYup)
+    this._app.use(expressErrorZod)
     this._app.use(expressErrorResponse)
 
-    // error handler
-    this._app.use(function (err: any, req: Request, res: Response) {
-      // Set locals, only providing error in development
-      res.locals.message = err.message
-      res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-      // Add this line to include winston logging
-      winstonLogger.error(
-        `${err.status || 500} - ${err.message} - ${req.originalUrl} - ${
-          req.method
-        } - ${req.ip}`
-      )
-
-      // Render the error page
-      res.status(err.status || 500)
-      res.render('error')
-    })
-
-    // set port
     this._app.set('port', this._port)
 
-    // return this application
-    return this.app()
+    return this._app
   }
 }
