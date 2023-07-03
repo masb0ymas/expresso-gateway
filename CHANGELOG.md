@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/masb0ymas/expresso-gateway/compare/v3.0.0...v3.1.0) (2023-07-03)
+
+
+### Features
+
+* add error handle zod ([b8b1893](https://github.com/masb0ymas/expresso-gateway/commit/b8b1893cdac33263aae6a6ded92895e9a54360a9))
+
+
+### Bug Fixes
+
+* change config logger ([c221ca9](https://github.com/masb0ymas/expresso-gateway/commit/c221ca9f8dd71efdfe6841335124cf379057fa2d))
+* change logger morgan to pino ([7904121](https://github.com/masb0ymas/expresso-gateway/commit/7904121aae00a6d39958e7d7a7fbc4400eb512fd))
+* change schema from yup to zod ([e0b9b3a](https://github.com/masb0ymas/expresso-gateway/commit/e0b9b3a10e0dad8d760ac0484ddfd285aa72b1c9))
+* config logger ([b066935](https://github.com/masb0ymas/expresso-gateway/commit/b066935e57b671de6cc3aa0eba52c6b756b9fd6a))
+* example job ([5371e1c](https://github.com/masb0ymas/expresso-gateway/commit/5371e1c87be16866c1f040c38218c0ae9cb54daf))
+* git ignore ([05073e7](https://github.com/masb0ymas/expresso-gateway/commit/05073e74673265bf83b53da58971d367817aba29))
+* improve core utils ([8eca084](https://github.com/masb0ymas/expresso-gateway/commit/8eca08411fd45b29d04973cb5915fa26e56b9cb1))
+* improve docker controller ([4fc5177](https://github.com/masb0ymas/expresso-gateway/commit/4fc5177d6994412a10dda4f8e9f9d7269603ceb4))
+* main ts ([aec95a8](https://github.com/masb0ymas/expresso-gateway/commit/aec95a85283f66da3038092a3aa249bcee098651))
+* update package ([0faaf97](https://github.com/masb0ymas/expresso-gateway/commit/0faaf9736d9733dc37e4782c5a7031b25ac0a517))
+
 ## [3.0.0](https://github.com/masb0ymas/expresso-gateway/compare/v2.1.0...v3.0.0) (2023-06-08)
 
 
