@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/masb0ymas/expresso-gateway/compare/v3.1.0...v3.1.1) (2023-08-06)
+
+
+### Bug Fixes
+
+* improve .eslintrc ([aafcb94](https://github.com/masb0ymas/expresso-gateway/commit/aafcb94ba850b78f2f1bc5e92853ff2fb0fb01ad))
+* remove helper yup ([e95b913](https://github.com/masb0ymas/expresso-gateway/commit/e95b91363e2082bc7c646316cb7ecdd9dda3fb27))
+* script generate ([e959349](https://github.com/masb0ymas/expresso-gateway/commit/e959349393a64357675bb353b2c7fd6c1a0b6885))
+* update dockerfile ([a0696fe](https://github.com/masb0ymas/expresso-gateway/commit/a0696fe7a24c85257bbf873b55a99aa66d93a329))
+
 ## [3.1.0](https://github.com/masb0ymas/expresso-gateway/compare/v3.0.0...v3.1.0) (2023-07-03)
 
 
