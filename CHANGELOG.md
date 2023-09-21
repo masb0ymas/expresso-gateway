@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/masb0ymas/expresso-gateway/compare/v3.1.1...v3.1.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* script post release ([205228f](https://github.com/masb0ymas/expresso-gateway/commit/205228f7c3c83f672683f09e6e8eacffc77b1b5f))
+* update mail config ([cd0bf28](https://github.com/masb0ymas/expresso-gateway/commit/cd0bf2829e890baf7e059443c6b0e8504810a259))
+* update package ([e5376a6](https://github.com/masb0ymas/expresso-gateway/commit/e5376a6d03ee8b6777bf016c7fa73c945c6e5e02))
+* update swc ([3365e4a](https://github.com/masb0ymas/expresso-gateway/commit/3365e4ac44e0e8050ff79facd12abd9e406c9941))
+
 ### [3.1.1](https://github.com/masb0ymas/expresso-gateway/compare/v3.1.0...v3.1.1) (2023-08-06)
 
 

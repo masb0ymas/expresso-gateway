@@ -1,6 +1,6 @@
 {
   "name": "expresso-gateway",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "expressjs, typescript, minimal, gateway",
   "main": "./dist/main.js",
   "scripts": {
