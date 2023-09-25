@@ -161,8 +161,8 @@ devDependencies:
     specifier: ^20.6.3
     version: 20.6.3
   '@types/node-cron':
-    specifier: ^3.0.8
-    version: 3.0.8
+    specifier: ^3.0.9
+    version: 3.0.9
   '@types/qs':
     specifier: ^6.9.8
     version: 6.9.8
@@ -3036,8 +3036,8 @@ packages:
       '@types/express': 4.17.17
     dev: true
 
-  /@types/node-cron@3.0.8:
-    resolution: {integrity: sha512-+z5VrCvLwiJUohbRSgHdyZnHzAaLuD/E2bBANw+NQ1l05Crj8dIxb/kKK+OEqRitV2Wr/LYLuEBenGDsHZVV5Q==}
+  /@types/node-cron@3.0.9:
+    resolution: {integrity: sha512-P10Vf+oagnMbefD31nqjS/dpBM34qzfdpvIgVZwtwsNb0Hg2lDaPFeGcyGUJIqh3zHlDMwYXGeunGgMnswgnPg==}
     dev: true
 
   /@types/node@14.18.62:
