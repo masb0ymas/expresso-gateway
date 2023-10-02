@@ -5304,10 +5304,10 @@ expresso-core@^0.9.0:
     pino "^8.15.2"
     pino-pretty "^10.2.0"
 
-expresso-hooks@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/expresso-hooks/-/expresso-hooks-0.9.0.tgz#cea283d3c7ddf0af2b751674008fcd03fcc0a866"
-  integrity sha512-mUX7NIPBmM42DM4GIdDfE99Xa5T9iuCPX/RahL2Qp+CN3/PpmWyfx3KLJmRVuKn1DQvs8iGmQUCLit70Y6orGA==
+expresso-hooks@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/expresso-hooks/-/expresso-hooks-0.9.1.tgz#d379e8f0868368755b846e08117eed55c2d10bc4"
+  integrity sha512-I2c1uo3OwBwudkb86F5Gr4jf+L+SRg3FK8O18rJOOnS70LWTBgbG7r7eUPiWw2VWqPZzeTdJSyvBebkwqQQGow==
   dependencies:
     colorette "^2.0.20"
     express "^4.18.2"

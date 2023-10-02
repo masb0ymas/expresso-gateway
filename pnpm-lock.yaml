@@ -45,8 +45,8 @@ dependencies:
     specifier: ^0.9.0
     version: 0.9.0
   expresso-hooks:
-    specifier: ^0.9.0
-    version: 0.9.0
+    specifier: ^0.9.1
+    version: 0.9.1
   expresso-provider:
     specifier: ^0.9.0
     version: 0.9.0
@@ -5894,8 +5894,8 @@ packages:
       - supports-color
     dev: false
 
-  /expresso-hooks@0.9.0:
-    resolution: {integrity: sha512-mUX7NIPBmM42DM4GIdDfE99Xa5T9iuCPX/RahL2Qp+CN3/PpmWyfx3KLJmRVuKn1DQvs8iGmQUCLit70Y6orGA==}
+  /expresso-hooks@0.9.1:
+    resolution: {integrity: sha512-I2c1uo3OwBwudkb86F5Gr4jf+L+SRg3FK8O18rJOOnS70LWTBgbG7r7eUPiWw2VWqPZzeTdJSyvBebkwqQQGow==}
     dependencies:
       colorette: 2.0.20
       express: 4.18.2
