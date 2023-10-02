@@ -5319,10 +5319,10 @@ expresso-hooks@^0.9.0:
     pino-pretty "^10.2.0"
     slugify "^1.6.6"
 
-expresso-provider@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/expresso-provider/-/expresso-provider-0.9.0.tgz#9598abe9d3e259bd38b22d2f446b7d9943976014"
-  integrity sha512-etHf6PDDJKTmFyQ73InjV5HGPCUQ25hmYYnfbedfLNCrKxGHITXS+14ccxBDtuRSvL0ooRyZjHI0uisiMJGuHA==
+expresso-provider@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/expresso-provider/-/expresso-provider-0.9.1.tgz#ed7e523a5751a1889cb0e8b099296d146999334c"
+  integrity sha512-6XnPRH42UXHA5Mfvk6uwVrUrLk2BsgFeSe/PnTZZwqhJwNKMUBODjEmo63o4HRvvN15F5MEl9YXE+nNZfSi5MA==
   dependencies:
     "@aws-sdk/client-s3" "^3.421.0"
     "@aws-sdk/s3-request-presigner" "^3.421.0"
