@@ -5291,10 +5291,10 @@ express@^4.18.2:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-expresso-core@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/expresso-core/-/expresso-core-0.9.0.tgz#cbaf0005cfd17d53f4b58705a986819dc0919fca"
-  integrity sha512-hagEWa6y87fPZ3H/SXhgq1okLTiyrjZ+2lZYxWjzap9GZdP77nd2Xi2rmguvf6+BXcfg9bsvbVkfQuAhufQlIg==
+expresso-core@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/expresso-core/-/expresso-core-0.9.1.tgz#3eab204c880ff14cc61da29e8d2279d582b8ba64"
+  integrity sha512-fk0zp/Muxf/52rxGUUsNcLkC648Q7eN321WrUYpvbfX/c/C85vpju5QAe5LurvGLO5f2O67MfjwHZ9wbUj3afg==
   dependencies:
     argon2 "^0.31.1"
     bcrypt "^5.1.1"
