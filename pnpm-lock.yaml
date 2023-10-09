@@ -45,8 +45,8 @@ dependencies:
     specifier: ^0.9.0
     version: 0.9.0
   expresso-hooks:
-    specifier: ^0.9.0
-    version: 0.9.0
+    specifier: ^0.10.0
+    version: 0.10.0
   expresso-provider:
     specifier: ^0.9.0
     version: 0.9.0
@@ -5894,8 +5894,8 @@ packages:
       - supports-color
     dev: false
 
-  /expresso-hooks@0.9.0:
-    resolution: {integrity: sha512-mUX7NIPBmM42DM4GIdDfE99Xa5T9iuCPX/RahL2Qp+CN3/PpmWyfx3KLJmRVuKn1DQvs8iGmQUCLit70Y6orGA==}
+  /expresso-hooks@0.10.0:
+    resolution: {integrity: sha512-q3zfeO85HmZbjztOn/uiskchKEFJdEc0baJelVTe2tAV/BEgVG77pf+EOLpcqv38zg7WcFn1aQllaMYa5vWB4A==}
     dependencies:
       colorette: 2.0.20
       express: 4.18.2
@@ -5903,8 +5903,6 @@ packages:
       jsonwebtoken: 9.0.2
       lodash: 4.17.21
       multer: 1.4.5-lts.1
-      pino: 8.15.3
-      pino-pretty: 10.2.0
       slugify: 1.6.6
     transitivePeerDependencies:
       - supports-color
