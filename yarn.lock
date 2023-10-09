@@ -5291,18 +5291,18 @@ express@^4.18.2:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-expresso-core@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/expresso-core/-/expresso-core-0.9.0.tgz#cbaf0005cfd17d53f4b58705a986819dc0919fca"
-  integrity sha512-hagEWa6y87fPZ3H/SXhgq1okLTiyrjZ+2lZYxWjzap9GZdP77nd2Xi2rmguvf6+BXcfg9bsvbVkfQuAhufQlIg==
+expresso-core@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/expresso-core/-/expresso-core-0.10.0.tgz#c4ca64935b174a53b0cc6110dc020551a57b96bc"
+  integrity sha512-rwMZO6Mu27bcTxyq1fvfbPwy8SdU0+V6XvKD4od3rKBAfcooXnHjWKSPZ4rGTmdMwigTjKos6PWrbWI+lpCpRw==
   dependencies:
     argon2 "^0.31.1"
     bcrypt "^5.1.1"
     colorette "^2.0.20"
     libphonenumber-js "^1.10.45"
     lodash "^4.17.21"
-    pino "^8.15.2"
-    pino-pretty "^10.2.0"
+    pino "^8.15.4"
+    pino-pretty "^10.2.2"
 
 expresso-hooks@^0.9.0:
   version "0.9.0"
@@ -8782,10 +8782,10 @@ pino-http@^8.5.0:
     pino-std-serializers "^6.0.0"
     process-warning "^2.0.0"
 
-pino-pretty@^10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/pino-pretty/-/pino-pretty-10.2.0.tgz#c674a153e15c08d7032a826d0051d786feace1d9"
-  integrity sha512-tRvpyEmGtc2D+Lr3FulIZ+R1baggQ4S3xD2Ar93KixFEDx6SEAUP3W5aYuEw1C73d6ROrNcB2IXLteW8itlwhA==
+pino-pretty@^10.2.0, pino-pretty@^10.2.2:
+  version "10.2.3"
+  resolved "https://registry.yarnpkg.com/pino-pretty/-/pino-pretty-10.2.3.tgz#db539c796a1421fd4d130734fa994f5a26027783"
+  integrity sha512-4jfIUc8TC1GPUfDyMSlW1STeORqkoxec71yhxIpLDQapUu8WOuoz2TTCoidrIssyz78LZC69whBMPIKCMbi3cw==
   dependencies:
     colorette "^2.0.7"
     dateformat "^4.6.3"
@@ -8807,10 +8807,10 @@ pino-std-serializers@^6.0.0:
   resolved "https://registry.yarnpkg.com/pino-std-serializers/-/pino-std-serializers-6.2.2.tgz#d9a9b5f2b9a402486a5fc4db0a737570a860aab3"
   integrity sha512-cHjPPsE+vhj/tnhCy/wiMh3M3z3h/j15zHQX+S9GkTBgqJuTuJzYJ4gUyACLhDaJ7kk9ba9iRDmbH2tJU03OiA==
 
-pino@^8.0.0, pino@^8.12.0, pino@^8.15.2, pino@^8.15.3:
-  version "8.15.3"
-  resolved "https://registry.yarnpkg.com/pino/-/pino-8.15.3.tgz#8d5d9b440f0218e8c03926d8f2e5bd0854c716eb"
-  integrity sha512-wDds1+DH8VaREe4fpLEKttGnDoLiX3KR3AP5bHsrRwEZ93y+Z/HFC03zkGSxpIGWKDHg24sloVqGcIWoLCkTLQ==
+pino@^8.0.0, pino@^8.12.0, pino@^8.15.2, pino@^8.15.3, pino@^8.15.4:
+  version "8.16.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-8.16.0.tgz#2465012a1d11fa2e7a0545032f636e203990ae26"
+  integrity sha512-UUmvQ/7KTZt/vHjhRrnyS7h+J7qPBQnpG80V56xmIC+o9IqYmQOw/UIny9S9zYDfRBR0ClouCr464EkBMIT7Fw==
   dependencies:
     atomic-sleep "^1.0.0"
     fast-redact "^3.1.1"
@@ -8821,7 +8821,7 @@ pino@^8.0.0, pino@^8.12.0, pino@^8.15.2, pino@^8.15.3:
     quick-format-unescaped "^4.0.3"
     real-require "^0.2.0"
     safe-stable-stringify "^2.3.1"
-    sonic-boom "^3.1.0"
+    sonic-boom "^3.7.0"
     thread-stream "^2.0.0"
 
 pipe-functions@^1.2.0, pipe-functions@^1.3.0:
@@ -9727,10 +9727,17 @@ socks@^2.7.1:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
 
-sonic-boom@^3.0.0, sonic-boom@^3.1.0:
+sonic-boom@^3.0.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-3.4.0.tgz#8582d1385ea3bf79ca953329043bfbdbabe58eb9"
   integrity sha512-zSe9QQW30nPzjkSJ0glFQO5T9lHsk39tz+2bAAwCj8CNgEG8ItZiX7Wb2ZgA8I04dwRGCcf1m3ABJa8AYm12Fw==
+  dependencies:
+    atomic-sleep "^1.0.0"
+
+sonic-boom@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-3.7.0.tgz#b4b7b8049a912986f4a92c51d4660b721b11f2f2"
+  integrity sha512-IudtNvSqA/ObjN97tfgNmOKyDOs4dNcg4cUUsHDebqsgb8wGBBwb31LIgShNO8fye0dFI52X1+tFoKKI6Rq1Gg==
   dependencies:
     atomic-sleep "^1.0.0"
 

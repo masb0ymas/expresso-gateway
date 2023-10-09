@@ -42,8 +42,8 @@ dependencies:
     specifier: ^1.0.15
     version: 1.0.15
   expresso-core:
-    specifier: ^0.9.0
-    version: 0.9.0
+    specifier: ^0.10.0
+    version: 0.10.0
   expresso-hooks:
     specifier: ^0.9.0
     version: 0.9.0
@@ -5879,16 +5879,16 @@ packages:
       - supports-color
     dev: false
 
-  /expresso-core@0.9.0:
-    resolution: {integrity: sha512-hagEWa6y87fPZ3H/SXhgq1okLTiyrjZ+2lZYxWjzap9GZdP77nd2Xi2rmguvf6+BXcfg9bsvbVkfQuAhufQlIg==}
+  /expresso-core@0.10.0:
+    resolution: {integrity: sha512-rwMZO6Mu27bcTxyq1fvfbPwy8SdU0+V6XvKD4od3rKBAfcooXnHjWKSPZ4rGTmdMwigTjKos6PWrbWI+lpCpRw==}
     dependencies:
       argon2: 0.31.1
       bcrypt: 5.1.1
       colorette: 2.0.20
       libphonenumber-js: 1.10.45
       lodash: 4.17.21
-      pino: 8.15.3
-      pino-pretty: 10.2.0
+      pino: 8.16.0
+      pino-pretty: 10.2.3
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -9439,6 +9439,26 @@ packages:
       strip-json-comments: 3.1.1
     dev: false
 
+  /pino-pretty@10.2.3:
+    resolution: {integrity: sha512-4jfIUc8TC1GPUfDyMSlW1STeORqkoxec71yhxIpLDQapUu8WOuoz2TTCoidrIssyz78LZC69whBMPIKCMbi3cw==}
+    hasBin: true
+    dependencies:
+      colorette: 2.0.20
+      dateformat: 4.6.3
+      fast-copy: 3.0.1
+      fast-safe-stringify: 2.1.1
+      help-me: 4.2.0
+      joycon: 3.1.1
+      minimist: 1.2.8
+      on-exit-leak-free: 2.1.0
+      pino-abstract-transport: 1.1.0
+      pump: 3.0.0
+      readable-stream: 4.4.2
+      secure-json-parse: 2.7.0
+      sonic-boom: 3.4.0
+      strip-json-comments: 3.1.1
+    dev: false
+
   /pino-std-serializers@6.2.2:
     resolution: {integrity: sha512-cHjPPsE+vhj/tnhCy/wiMh3M3z3h/j15zHQX+S9GkTBgqJuTuJzYJ4gUyACLhDaJ7kk9ba9iRDmbH2tJU03OiA==}
     dev: false
@@ -9457,6 +9477,23 @@ packages:
       real-require: 0.2.0
       safe-stable-stringify: 2.4.3
       sonic-boom: 3.4.0
+      thread-stream: 2.4.0
+    dev: false
+
+  /pino@8.16.0:
+    resolution: {integrity: sha512-UUmvQ/7KTZt/vHjhRrnyS7h+J7qPBQnpG80V56xmIC+o9IqYmQOw/UIny9S9zYDfRBR0ClouCr464EkBMIT7Fw==}
+    hasBin: true
+    dependencies:
+      atomic-sleep: 1.0.0
+      fast-redact: 3.3.0
+      on-exit-leak-free: 2.1.0
+      pino-abstract-transport: 1.1.0
+      pino-std-serializers: 6.2.2
+      process-warning: 2.2.0
+      quick-format-unescaped: 4.0.4
+      real-require: 0.2.0
+      safe-stable-stringify: 2.4.3
+      sonic-boom: 3.7.0
       thread-stream: 2.4.0
     dev: false
 
@@ -10345,6 +10382,12 @@ packages:
 
   /sonic-boom@3.4.0:
     resolution: {integrity: sha512-zSe9QQW30nPzjkSJ0glFQO5T9lHsk39tz+2bAAwCj8CNgEG8ItZiX7Wb2ZgA8I04dwRGCcf1m3ABJa8AYm12Fw==}
+    dependencies:
+      atomic-sleep: 1.0.0
+    dev: false
+
+  /sonic-boom@3.7.0:
+    resolution: {integrity: sha512-IudtNvSqA/ObjN97tfgNmOKyDOs4dNcg4cUUsHDebqsgb8wGBBwb31LIgShNO8fye0dFI52X1+tFoKKI6Rq1Gg==}
     dependencies:
       atomic-sleep: 1.0.0
     dev: false
